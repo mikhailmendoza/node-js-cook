@@ -1,0 +1,3049 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="AdminService" targetNamespace="http://vuepoint.com/" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" 
+    xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" 
+    xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" 
+    xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" 
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+    xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:tns="http://vuepoint.com/" 
+    xmlns:wsa10="http://www.w3.org/2005/08/addressing" 
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+    <wsdl:types>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://vuepoint.com/" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:import namespace="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+            <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+            <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+            <xs:element name="GetUtcNow">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUtcNowResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUtcNowResult" type="xs:dateTime"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetServerLocalDateTime">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetServerLocalDateTimeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetServerLocalDateTimeResult" type="xs:dateTime"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCourseInfoResult" nillable="true" type="q1:ServiceRC" 
+                            xmlns:q1="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseLaunchUrl">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="loginName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="courseId" type="q2:guid" 
+                            xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseLaunchUrlResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCourseLaunchUrlResult" nillable="true" type="q3:ServiceRC" 
+                            xmlns:q3="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCurriculumCourses">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="curriculumId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCurriculumCoursesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCurriculumCoursesResult" nillable="true" type="q4:ServiceRC" 
+                            xmlns:q4="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="courses" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCurriculumCoursesInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="curriculumId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCurriculumCoursesInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCurriculumCoursesInfoResult" nillable="true" type="q5:ServiceRC" 
+                            xmlns:q5="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="courses" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseEventData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" type="q6:guid" 
+                            xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseEventDataResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCourseEventDataResult" nillable="true" type="q7:ServiceRC" 
+                            xmlns:q7="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AssignCourseByUserAttribute">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="levels" nillable="true" type="q8:ArrayOfstring" 
+                            xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AssignCourseByUserAttributeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AssignCourseByUserAttributeResult" nillable="true" type="q9:ServiceRC" 
+                            xmlns:q9="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCourseByUserAttribute">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCourseByUserAttributeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoveCourseByUserAttributeResult" nillable="true" type="q10:ServiceRC" 
+                            xmlns:q10="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddEventLevel">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddEventLevelResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddEventLevelResult" nillable="true" type="q11:ServiceRC" 
+                            xmlns:q11="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCourseLevel">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCourseLevelResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddCourseLevelResult" nillable="true" type="q12:ServiceRC" 
+                            xmlns:q12="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCourseUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="courseId" type="q13:guid" 
+                            xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCourseUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddCourseUserResult" nillable="true" type="q14:ServiceRC" 
+                            xmlns:q14="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCourseEventUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="loginName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="promptPasswordChange" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="lcid" type="xs:int"/>
+                        <xs:element minOccurs="0" name="regionalLcid" type="xs:int"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="courseId" type="q15:guid" 
+                            xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="createUser" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="addUserToLevel" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="addCourseAndEventToLevel" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="activateUser" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCourseEventUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddCourseEventUserResult" nillable="true" type="q16:ServiceRC" 
+                            xmlns:q16="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="resultXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCourseEventUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="loginName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="removeFromCourseBasedOnEventId" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="courseId" type="q17:guid" 
+                            xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCourseEventUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoveCourseEventUserResult" nillable="true" type="q18:ServiceRC" 
+                            xmlns:q18="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="resultXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateCourse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="courseShortName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateCourseResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateCourseResult" nillable="true" type="q19:ServiceRC" 
+                            xmlns:q19="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateEvent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventType" type="xs:int"/>
+                        <xs:element minOccurs="0" name="eventName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventOffset" type="xs:int"/>
+                        <xs:element minOccurs="0" name="clsStart" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateEventResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateEventResult" nillable="true" type="q20:ServiceRC" 
+                            xmlns:q20="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveCourses">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="lookupKey" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="lookupValue" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveCoursesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveCoursesResult" nillable="true" type="q21:ServiceRC" 
+                            xmlns:q21="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveEvents">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="lookupKey" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="lookupValue" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="eventType" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveEventsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveEventsResult" nillable="true" type="q22:ServiceRC" 
+                            xmlns:q22="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveLevelCurriculaList">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveLevelCurriculaListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveLevelCurriculaListResult" nillable="true" type="q23:ServiceRC" 
+                            xmlns:q23="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="curriculaList" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveLevelCurriculaListByLevelId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveLevelCurriculaListByLevelIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveLevelCurriculaListByLevelIdResult" nillable="true" type="q24:ServiceRC" 
+                            xmlns:q24="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="curriculaList" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserCurriculaList">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="showAvailable" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserCurriculaListResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveUserCurriculaListResult" nillable="true" type="q25:ServiceRC" 
+                            xmlns:q25="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="curriculaList" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCurriculumUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="curriculumId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCurriculumUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddCurriculumUserResult" nillable="true" type="q26:ServiceRC" 
+                            xmlns:q26="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCurriculumUserByUserId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="curriculumId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddCurriculumUserByUserIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddCurriculumUserByUserIdResult" nillable="true" type="q27:ServiceRC" 
+                            xmlns:q27="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCurriculumUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="curriculumId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="cleanupCourses" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCurriculumUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoveCurriculumUserResult" nillable="true" type="q28:ServiceRC" 
+                            xmlns:q28="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserEnrolledCurriculum">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="curriculumId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserEnrolledCurriculumResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveUserEnrolledCurriculumResult" nillable="true" type="q29:ServiceRC" 
+                            xmlns:q29="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCurriculum">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="imscurriculumId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCurriculumResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoveCurriculumResult" nillable="true" type="q30:ServiceRC" 
+                            xmlns:q30="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCurriculumSchedule">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="imscurriculumscheduleId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveCurriculumScheduleResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoveCurriculumScheduleResult" nillable="true" type="q31:ServiceRC" 
+                            xmlns:q31="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CloseCurriculum">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="imscurriculumId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CloseCurriculumResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CloseCurriculumResult" nillable="true" type="q32:ServiceRC" 
+                            xmlns:q32="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StoreExternalCourseData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="externalTestId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="score" type="xs:int"/>
+                        <xs:element minOccurs="0" name="scored" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="sessionStart" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="sessionDuration" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StoreExternalCourseDataResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="StoreExternalCourseDataResult" nillable="true" type="q33:ServiceRC" 
+                            xmlns:q33="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddUserScoreForExternalTest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="externalTestId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="passingScore" type="xs:unsignedByte"/>
+                        <xs:element minOccurs="0" name="scoredDate" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="scoreWeighted" type="xs:unsignedByte"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddUserScoreForExternalTestResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddUserScoreForExternalTestResult" nillable="true" type="q34:ServiceRC" 
+                            xmlns:q34="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateExternalTest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="testName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="assessType" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateExternalTestResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateExternalTestResult" nillable="true" type="q35:ServiceRC" 
+                            xmlns:q35="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveExternalTest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="assessType" type="xs:int"/>
+                        <xs:element minOccurs="0" name="testName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveExternalTestResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveExternalTestResult" nillable="true" type="q36:ServiceRC" 
+                            xmlns:q36="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddExternalTestScore">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="eventName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="courseId" type="q37:guid" 
+                            xmlns:q37="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                        <xs:element minOccurs="0" name="userScore" type="xs:unsignedByte"/>
+                        <xs:element minOccurs="0" name="dateScored" type="xs:dateTime"/>
+                        <xs:element minOccurs="0" name="createExternalTest" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="testName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="passingScore" type="xs:unsignedByte"/>
+                        <xs:element minOccurs="0" name="assessType" type="xs:unsignedByte"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddExternalTestScoreResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddExternalTestScoreResult" nillable="true" type="q38:ServiceRC" 
+                            xmlns:q38="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetExternalTestScore">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="loginName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="eventName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="courseId" type="q39:guid" 
+                            xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                        <xs:element minOccurs="0" name="testName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="assessType" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetExternalTestScoreResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetExternalTestScoreResult" nillable="true" type="q40:ServiceRC" 
+                            xmlns:q40="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLevel">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueParentLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="licenses" type="xs:int"/>
+                        <xs:element minOccurs="0" name="optionsXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateLevelResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateLevelResult" nillable="true" type="q41:ServiceRC" 
+                            xmlns:q41="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateLevel">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelIdNew" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="licenses" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateLevelResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UpdateLevelResult" nillable="true" type="q42:ServiceRC" 
+                            xmlns:q42="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StoreLevel">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelIdNew" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueParentLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="licenses" type="xs:int"/>
+                        <xs:element minOccurs="0" name="optionsXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StoreLevelResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="StoreLevelResult" nillable="true" type="q43:ServiceRC" 
+                            xmlns:q43="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteLevel">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteLevelResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteLevelResult" nillable="true" type="q44:ServiceRC" 
+                            xmlns:q44="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteLevelWithIgnoreUsers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="ignoreLevelUsers" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteLevelWithIgnoreUsersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteLevelWithIgnoreUsersResult" nillable="true" type="q45:ServiceRC" 
+                            xmlns:q45="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserLevels">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserLevelsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserLevelsResult" nillable="true" type="q46:ServiceRC" 
+                            xmlns:q46="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetSubLevels">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="depth" type="xs:unsignedByte"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetSubLevelsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetSubLevelsResult" nillable="true" type="q47:ServiceRC" 
+                            xmlns:q47="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLevelIdByUniqueId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLevelIdByUniqueIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLevelIdByUniqueIdResult" nillable="true" type="q48:ServiceRC" 
+                            xmlns:q48="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLevelParentId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="whichLevel" type="xs:unsignedByte"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLevelParentIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLevelParentIdResult" nillable="true" type="q49:ServiceRC" 
+                            xmlns:q49="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userIdentityInfoXml" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="outputFilterXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserResult" nillable="true" type="q50:ServiceRC" 
+                            xmlns:q50="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FindUsers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="outputFilterXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FindUsersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="FindUsersResult" nillable="true" type="q51:ServiceRC" 
+                            xmlns:q51="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FindLevels">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="levelSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="parentLevelSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="outputFilterXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FindLevelsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="FindLevelsResult" nillable="true" type="q52:ServiceRC" 
+                            xmlns:q52="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FindCourses">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="levelSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="outputFilterXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FindCoursesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="FindCoursesResult" nillable="true" type="q53:ServiceRC" 
+                            xmlns:q53="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FindCoursesV2">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="levelSearchInfo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="outputFilterXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FindCoursesV2Response">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="FindCoursesV2Result" nillable="true" type="q54:ServiceRC" 
+                            xmlns:q54="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="createUserData" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CreateUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CreateUserResult" nillable="true" type="q55:ServiceRC" 
+                            xmlns:q55="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StoreUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="storeUserData" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StoreUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="StoreUserResult" nillable="true" type="q56:ServiceRC" 
+                            xmlns:q56="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="removeFromLevels" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="deletePermanent" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DeleteUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="DeleteUserResult" nillable="true" type="q57:ServiceRC" 
+                            xmlns:q57="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddLevelUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="removeUserFromOtherLevels" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddLevelUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddLevelUserResult" nillable="true" type="q58:ServiceRC" 
+                            xmlns:q58="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddLevelUserByUserId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddLevelUserByUserIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddLevelUserByUserIdResult" nillable="true" type="q59:ServiceRC" 
+                            xmlns:q59="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveLevelUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveLevelUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoveLevelUserResult" nillable="true" type="q60:ServiceRC" 
+                            xmlns:q60="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddLevelManager">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="allRights" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddLevelManagerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddLevelManagerResult" nillable="true" type="q61:ServiceRC" 
+                            xmlns:q61="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveLevelManager">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="removeGlobal" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveLevelManagerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoveLevelManagerResult" nillable="true" type="q62:ServiceRC" 
+                            xmlns:q62="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddLevelManagerPermissions">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="permissionGroup" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="allRights" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddLevelManagerPermissionsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddLevelManagerPermissionsResult" nillable="true" type="q63:ServiceRC" 
+                            xmlns:q63="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserProfile">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserProfileResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserProfileResult" nillable="true" type="q64:ServiceRC" 
+                            xmlns:q64="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserTranscript">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="uniqueUserId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userIdentityType" type="xs:int"/>
+                        <xs:element minOccurs="0" name="option" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserTranscriptResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserTranscriptResult" nillable="true" type="q65:ServiceRC" 
+                            xmlns:q65="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserVlsCourseProgressCustom">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="loginName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserVlsCourseProgressCustomResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserVlsCourseProgressCustomResult" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserVlsCourseProgress">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="loginName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="courseId" type="q66:guid" 
+                            xmlns:q66="http://schemas.microsoft.com/2003/10/Serialization/"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetUserVlsCourseProgressResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetUserVlsCourseProgressResult" nillable="true" type="q67:ServiceRC" 
+                            xmlns:q67="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MergeUsers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userIdentityInfoXml" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="recipientIdentityInfoXml" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="donorIdentityInfoXml" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserFields" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserLevels" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCertificates" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCatalogs" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCurricula" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCurriculaSchedule" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCoursesEvents" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserTranscripts" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserOutsideCredits" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCourseCredits" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserExternalTestScore" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserOpenAccess" type="xs:int"/>
+                        <xs:element minOccurs="0" name="retLog" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MergeUsersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="MergeUsersResult" nillable="true" type="q68:ServiceRC" 
+                            xmlns:q68="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MergeUsersByUniqueIds">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="adminLoginName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="recipientUniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="donorUniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserFields" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserLevels" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCertificates" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCatalogs" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCurricula" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCurriculaSchedule" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCoursesEvents" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserTranscripts" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserOutsideCredits" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserCourseCredits" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserExternalTestScore" type="xs:int"/>
+                        <xs:element minOccurs="0" name="mergeModeOfUserOpenAccess" type="xs:int"/>
+                        <xs:element minOccurs="0" name="retLog" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MergeUsersByUniqueIdsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="MergeUsersByUniqueIdsResult" nillable="true" type="q69:ServiceRC" 
+                            xmlns:q69="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateUserTranscript">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="sourceXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UpdateUserTranscriptResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="UpdateUserTranscriptResult" nillable="true" type="q70:ServiceRC" 
+                            xmlns:q70="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddUserToEvent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddUserToEventResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddUserToEventResult" nillable="true" type="q71:ServiceRC" 
+                            xmlns:q71="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddUserScoreAdmin">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="scoredDateTime" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddUserScoreAdminResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AddUserScoreAdminResult" nillable="true" type="q72:ServiceRC" 
+                            xmlns:q72="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserEnrolledEvent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserEnrolledEventResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveUserEnrolledEventResult" nillable="true" type="q73:ServiceRC" 
+                            xmlns:q73="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserEnrolledCourse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserEnrolledCourseResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveUserEnrolledCourseResult" nillable="true" type="q74:ServiceRC" 
+                            xmlns:q74="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserScore">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="eventId" type="xs:int"/>
+                        <xs:element minOccurs="0" name="userId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUserScoreResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveUserScoreResult" nillable="true" type="q75:ServiceRC" 
+                            xmlns:q75="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUsers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="lookupKey" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="lookupValue" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="levelId" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RetrieveUsersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RetrieveUsersResult" nillable="true" type="q76:ServiceRC" 
+                            xmlns:q76="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLastUserId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="idFormat" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetLastUserIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetLastUserIdResult" nillable="true" type="q77:ServiceRC" 
+                            xmlns:q77="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AssignUserManager">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userUniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userManagerUniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="sendNotifications" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="removeOtherUserManagers" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AssignUserManagerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AssignUserManagerResult" nillable="true" type="q78:ServiceRC" 
+                            xmlns:q78="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AssignPortalManagerRoleToUser">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userUniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="allowEnrollmentInFutureEvents" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowEnrollmentInEventsUserTaken" type="xs:int"/>
+                        <xs:element minOccurs="0" name="allowImpersonation" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowEnrollmentCancellation" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowLaunchingEvaluation" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowAddRemoveCoursesFavorites" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowCurriculumEnrollment" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowCurriculumScheduleEnrollment" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowAddRemoveResources" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowViewAssignments" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowTranscriptAccess" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="allowRegisterByCourse" type="xs:boolean"/>
+                        <xs:element minOccurs="0" name="registerByCourseOptions" type="xs:int"/>
+                        <xs:element minOccurs="0" name="allowAssignByResource" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AssignPortalManagerRoleToUserResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="AssignPortalManagerRoleToUserResult" nillable="true" type="q79:ServiceRC" 
+                            xmlns:q79="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetPortalManagerInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userUniqueId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetPortalManagerInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetPortalManagerInfoResult" nillable="true" type="q80:ServiceRC" 
+                            xmlns:q80="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemovePortalManager">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userUniqueId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="uniqueLevelId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemovePortalManagerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemovePortalManagerResult" nillable="true" type="q81:ServiceRC" 
+                            xmlns:q81="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveUserManagers">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userUniqueId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="RemoveUserManagersResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="RemoveUserManagersResult" nillable="true" type="q82:ServiceRC" 
+                            xmlns:q82="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseCompletionInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseCompletionInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCourseCompletionInfoResult" nillable="true" type="q83:ServiceRC" 
+                            xmlns:q83="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseAttendanceInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseAttendanceInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCourseAttendanceInfoResult" nillable="true" type="q84:ServiceRC" 
+                            xmlns:q84="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseEnrollnmentInfo">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCourseEnrollnmentInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCourseEnrollnmentInfoResult" nillable="true" type="q85:ServiceRC" 
+                            xmlns:q85="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCustomLevelInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetCustomLevelInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetCustomLevelInfoResult" nillable="true" type="q86:ServiceRC" 
+                            xmlns:q86="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data"/>
+                        <xs:element minOccurs="0" name="dataXml" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+            <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+            <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+            <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+            <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+            <xs:element name="byte" nillable="true" type="xs:byte"/>
+            <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+            <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+            <xs:element name="double" nillable="true" type="xs:double"/>
+            <xs:element name="float" nillable="true" type="xs:float"/>
+            <xs:element name="int" nillable="true" type="xs:int"/>
+            <xs:element name="long" nillable="true" type="xs:long"/>
+            <xs:element name="QName" nillable="true" type="xs:QName"/>
+            <xs:element name="short" nillable="true" type="xs:short"/>
+            <xs:element name="string" nillable="true" type="xs:string"/>
+            <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+            <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+            <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+            <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+            <xs:element name="char" nillable="true" type="tns:char"/>
+            <xs:simpleType name="char">
+                <xs:restriction base="xs:int"/>
+            </xs:simpleType>
+            <xs:element name="duration" nillable="true" type="tns:duration"/>
+            <xs:simpleType name="duration">
+                <xs:restriction base="xs:duration">
+                    <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+                    <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+                    <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="guid" nillable="true" type="tns:guid"/>
+            <xs:simpleType name="guid">
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:attribute name="FactoryType" type="xs:QName"/>
+            <xs:attribute name="Id" type="xs:ID"/>
+            <xs:attribute name="Ref" type="xs:IDREF"/>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://schemas.datacontract.org/2004/07/LMS.Admin.Contracts.Data">
+            <xs:complexType name="ServiceRC">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="AdditionalInfo" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ErrorCode" type="xs:int"/>
+                    <xs:element minOccurs="0" name="ReturnCode" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ServiceRC" nillable="true" type="tns:ServiceRC"/>
+        </xs:schema>
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" 
+            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+            <xs:complexType name="ArrayOfstring">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="IAdminService_GetUtcNow_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUtcNow"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUtcNow_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUtcNowResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetServerLocalDateTime_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetServerLocalDateTime"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetServerLocalDateTime_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetServerLocalDateTimeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseInfo"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseLaunchUrl_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseLaunchUrl"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseLaunchUrl_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseLaunchUrlResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCurriculumCourses_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCurriculumCourses"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCurriculumCourses_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCurriculumCoursesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCurriculumCoursesInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCurriculumCoursesInfo"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCurriculumCoursesInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCurriculumCoursesInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseEventData_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseEventData"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseEventData_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseEventDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AssignCourseByUserAttribute_InputMessage">
+        <wsdl:part name="parameters" element="tns:AssignCourseByUserAttribute"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AssignCourseByUserAttribute_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AssignCourseByUserAttributeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCourseByUserAttribute_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCourseByUserAttribute"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCourseByUserAttribute_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCourseByUserAttributeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddEventLevel_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddEventLevel"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddEventLevel_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddEventLevelResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCourseLevel_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddCourseLevel"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCourseLevel_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddCourseLevelResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCourseUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddCourseUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCourseUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddCourseUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCourseEventUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddCourseEventUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCourseEventUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddCourseEventUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCourseEventUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCourseEventUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCourseEventUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCourseEventUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateCourse_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateCourse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateCourse_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateCourseResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateEvent_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateEvent"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateEvent_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateEventResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveCourses_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveCourses"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveCourses_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveCoursesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveEvents_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveEvents"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveEvents_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveEventsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveLevelCurriculaList_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveLevelCurriculaList"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveLevelCurriculaList_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveLevelCurriculaListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveLevelCurriculaListByLevelId_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveLevelCurriculaListByLevelId"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveLevelCurriculaListByLevelId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveLevelCurriculaListByLevelIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserCurriculaList_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserCurriculaList"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserCurriculaList_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserCurriculaListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCurriculumUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddCurriculumUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCurriculumUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddCurriculumUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCurriculumUserByUserId_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddCurriculumUserByUserId"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddCurriculumUserByUserId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddCurriculumUserByUserIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCurriculumUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCurriculumUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCurriculumUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCurriculumUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserEnrolledCurriculum_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserEnrolledCurriculum"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserEnrolledCurriculum_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserEnrolledCurriculumResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCurriculum_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCurriculum"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCurriculum_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCurriculumResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCurriculumSchedule_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCurriculumSchedule"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveCurriculumSchedule_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveCurriculumScheduleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CloseCurriculum_InputMessage">
+        <wsdl:part name="parameters" element="tns:CloseCurriculum"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CloseCurriculum_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CloseCurriculumResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_StoreExternalCourseData_InputMessage">
+        <wsdl:part name="parameters" element="tns:StoreExternalCourseData"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_StoreExternalCourseData_OutputMessage">
+        <wsdl:part name="parameters" element="tns:StoreExternalCourseDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddUserScoreForExternalTest_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddUserScoreForExternalTest"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddUserScoreForExternalTest_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddUserScoreForExternalTestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateExternalTest_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateExternalTest"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateExternalTest_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateExternalTestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveExternalTest_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveExternalTest"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveExternalTest_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveExternalTestResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddExternalTestScore_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddExternalTestScore"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddExternalTestScore_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddExternalTestScoreResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetExternalTestScore_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetExternalTestScore"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetExternalTestScore_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetExternalTestScoreResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateLevel_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLevel"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateLevel_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateLevelResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_UpdateLevel_InputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateLevel"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_UpdateLevel_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateLevelResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_StoreLevel_InputMessage">
+        <wsdl:part name="parameters" element="tns:StoreLevel"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_StoreLevel_OutputMessage">
+        <wsdl:part name="parameters" element="tns:StoreLevelResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_DeleteLevel_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteLevel"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_DeleteLevel_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteLevelResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_DeleteLevelWithIgnoreUsers_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteLevelWithIgnoreUsers"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_DeleteLevelWithIgnoreUsers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteLevelWithIgnoreUsersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserLevels_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserLevels"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserLevels_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserLevelsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetSubLevels_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetSubLevels"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetSubLevels_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetSubLevelsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetLevelIdByUniqueId_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLevelIdByUniqueId"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetLevelIdByUniqueId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLevelIdByUniqueIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetLevelParentId_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLevelParentId"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetLevelParentId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLevelParentIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_FindUsers_InputMessage">
+        <wsdl:part name="parameters" element="tns:FindUsers"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_FindUsers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:FindUsersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_FindLevels_InputMessage">
+        <wsdl:part name="parameters" element="tns:FindLevels"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_FindLevels_OutputMessage">
+        <wsdl:part name="parameters" element="tns:FindLevelsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_FindCourses_InputMessage">
+        <wsdl:part name="parameters" element="tns:FindCourses"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_FindCourses_OutputMessage">
+        <wsdl:part name="parameters" element="tns:FindCoursesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_FindCoursesV2_InputMessage">
+        <wsdl:part name="parameters" element="tns:FindCoursesV2"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_FindCoursesV2_OutputMessage">
+        <wsdl:part name="parameters" element="tns:FindCoursesV2Response"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_CreateUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CreateUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_StoreUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:StoreUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_StoreUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:StoreUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_DeleteUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_DeleteUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:DeleteUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddLevelUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddLevelUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddLevelUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddLevelUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddLevelUserByUserId_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddLevelUserByUserId"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddLevelUserByUserId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddLevelUserByUserIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveLevelUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveLevelUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveLevelUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveLevelUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddLevelManager_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddLevelManager"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddLevelManager_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddLevelManagerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveLevelManager_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveLevelManager"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveLevelManager_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveLevelManagerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddLevelManagerPermissions_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddLevelManagerPermissions"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddLevelManagerPermissions_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddLevelManagerPermissionsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserProfile_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserProfile"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserProfile_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserProfileResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserTranscript_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserTranscript"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserTranscript_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserTranscriptResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserVlsCourseProgressCustom_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserVlsCourseProgressCustom"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserVlsCourseProgressCustom_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserVlsCourseProgressCustomResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserVlsCourseProgress_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserVlsCourseProgress"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetUserVlsCourseProgress_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetUserVlsCourseProgressResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_MergeUsers_InputMessage">
+        <wsdl:part name="parameters" element="tns:MergeUsers"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_MergeUsers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:MergeUsersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_MergeUsersByUniqueIds_InputMessage">
+        <wsdl:part name="parameters" element="tns:MergeUsersByUniqueIds"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_MergeUsersByUniqueIds_OutputMessage">
+        <wsdl:part name="parameters" element="tns:MergeUsersByUniqueIdsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_UpdateUserTranscript_InputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateUserTranscript"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_UpdateUserTranscript_OutputMessage">
+        <wsdl:part name="parameters" element="tns:UpdateUserTranscriptResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddUserToEvent_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddUserToEvent"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddUserToEvent_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddUserToEventResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddUserScoreAdmin_InputMessage">
+        <wsdl:part name="parameters" element="tns:AddUserScoreAdmin"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AddUserScoreAdmin_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AddUserScoreAdminResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserEnrolledEvent_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserEnrolledEvent"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserEnrolledEvent_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserEnrolledEventResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserEnrolledCourse_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserEnrolledCourse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserEnrolledCourse_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserEnrolledCourseResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserScore_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserScore"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUserScore_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUserScoreResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUsers_InputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUsers"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RetrieveUsers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RetrieveUsersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetLastUserId_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetLastUserId"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetLastUserId_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetLastUserIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AssignUserManager_InputMessage">
+        <wsdl:part name="parameters" element="tns:AssignUserManager"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AssignUserManager_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AssignUserManagerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AssignPortalManagerRoleToUser_InputMessage">
+        <wsdl:part name="parameters" element="tns:AssignPortalManagerRoleToUser"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_AssignPortalManagerRoleToUser_OutputMessage">
+        <wsdl:part name="parameters" element="tns:AssignPortalManagerRoleToUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetPortalManagerInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetPortalManagerInfo"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetPortalManagerInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetPortalManagerInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemovePortalManager_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemovePortalManager"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemovePortalManager_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemovePortalManagerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveUserManagers_InputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveUserManagers"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_RemoveUserManagers_OutputMessage">
+        <wsdl:part name="parameters" element="tns:RemoveUserManagersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseCompletionInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseCompletionInfo"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseCompletionInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseCompletionInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseAttendanceInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseAttendanceInfo"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseAttendanceInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseAttendanceInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseEnrollnmentInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseEnrollnmentInfo"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCourseEnrollnmentInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCourseEnrollnmentInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCustomLevelInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetCustomLevelInfo"/>
+    </wsdl:message>
+    <wsdl:message name="IAdminService_GetCustomLevelInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetCustomLevelInfoResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="IAdminService">
+        <wsdl:operation name="GetUtcNow">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IAdminHelper/GetUtcNow" message="tns:IAdminService_GetUtcNow_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IAdminHelper/GetUtcNowResponse" message="tns:IAdminService_GetUtcNow_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetServerLocalDateTime">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IAdminHelper/GetServerLocalDateTime" message="tns:IAdminService_GetServerLocalDateTime_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IAdminHelper/GetServerLocalDateTimeResponse" message="tns:IAdminService_GetServerLocalDateTime_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseInfo">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/GetCourseInfo" message="tns:IAdminService_GetCourseInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/GetCourseInfoResponse" message="tns:IAdminService_GetCourseInfo_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseLaunchUrl">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/GetCourseLaunchUrl" message="tns:IAdminService_GetCourseLaunchUrl_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/GetCourseLaunchUrlResponse" message="tns:IAdminService_GetCourseLaunchUrl_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCurriculumCourses">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/GetCurriculumCourses" message="tns:IAdminService_GetCurriculumCourses_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/GetCurriculumCoursesResponse" message="tns:IAdminService_GetCurriculumCourses_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCurriculumCoursesInfo">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/GetCurriculumCoursesInfo" message="tns:IAdminService_GetCurriculumCoursesInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/GetCurriculumCoursesInfoResponse" message="tns:IAdminService_GetCurriculumCoursesInfo_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseEventData">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/GetCourseEventData" message="tns:IAdminService_GetCourseEventData_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/GetCourseEventDataResponse" message="tns:IAdminService_GetCourseEventData_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AssignCourseByUserAttribute">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/AssignCourseByUserAttribute" message="tns:IAdminService_AssignCourseByUserAttribute_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/AssignCourseByUserAttributeResponse" message="tns:IAdminService_AssignCourseByUserAttribute_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCourseByUserAttribute">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/RemoveCourseByUserAttribute" message="tns:IAdminService_RemoveCourseByUserAttribute_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/RemoveCourseByUserAttributeResponse" message="tns:IAdminService_RemoveCourseByUserAttribute_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddEventLevel">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/AddEventLevel" message="tns:IAdminService_AddEventLevel_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/AddEventLevelResponse" message="tns:IAdminService_AddEventLevel_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddCourseLevel">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/AddCourseLevel" message="tns:IAdminService_AddCourseLevel_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/AddCourseLevelResponse" message="tns:IAdminService_AddCourseLevel_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddCourseUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/AddCourseUser" message="tns:IAdminService_AddCourseUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/AddCourseUserResponse" message="tns:IAdminService_AddCourseUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddCourseEventUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/AddCourseEventUser" message="tns:IAdminService_AddCourseEventUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/AddCourseEventUserResponse" message="tns:IAdminService_AddCourseEventUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCourseEventUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/RemoveCourseEventUser" message="tns:IAdminService_RemoveCourseEventUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/RemoveCourseEventUserResponse" message="tns:IAdminService_RemoveCourseEventUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateCourse">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/CreateCourse" message="tns:IAdminService_CreateCourse_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/CreateCourseResponse" message="tns:IAdminService_CreateCourse_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateEvent">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/CreateEvent" message="tns:IAdminService_CreateEvent_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/CreateEventResponse" message="tns:IAdminService_CreateEvent_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveCourses">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/RetrieveCourses" message="tns:IAdminService_RetrieveCourses_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/RetrieveCoursesResponse" message="tns:IAdminService_RetrieveCourses_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveEvents">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICourseManagement/RetrieveEvents" message="tns:IAdminService_RetrieveEvents_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICourseManagement/RetrieveEventsResponse" message="tns:IAdminService_RetrieveEvents_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveLevelCurriculaList">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/RetrieveLevelCurriculaList" message="tns:IAdminService_RetrieveLevelCurriculaList_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/RetrieveLevelCurriculaListResponse" message="tns:IAdminService_RetrieveLevelCurriculaList_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveLevelCurriculaListByLevelId">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/RetrieveLevelCurriculaListByLevelId" message="tns:IAdminService_RetrieveLevelCurriculaListByLevelId_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/RetrieveLevelCurriculaListByLevelIdResponse" message="tns:IAdminService_RetrieveLevelCurriculaListByLevelId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserCurriculaList">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/RetrieveUserCurriculaList" message="tns:IAdminService_RetrieveUserCurriculaList_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/RetrieveUserCurriculaListResponse" message="tns:IAdminService_RetrieveUserCurriculaList_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddCurriculumUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/AddCurriculumUser" message="tns:IAdminService_AddCurriculumUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/AddCurriculumUserResponse" message="tns:IAdminService_AddCurriculumUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddCurriculumUserByUserId">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/AddCurriculumUserByUserId" message="tns:IAdminService_AddCurriculumUserByUserId_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/AddCurriculumUserByUserIdResponse" message="tns:IAdminService_AddCurriculumUserByUserId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCurriculumUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/RemoveCurriculumUser" message="tns:IAdminService_RemoveCurriculumUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/RemoveCurriculumUserResponse" message="tns:IAdminService_RemoveCurriculumUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserEnrolledCurriculum">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/RetrieveUserEnrolledCurriculum" message="tns:IAdminService_RetrieveUserEnrolledCurriculum_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/RetrieveUserEnrolledCurriculumResponse" message="tns:IAdminService_RetrieveUserEnrolledCurriculum_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCurriculum">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/RemoveCurriculum" message="tns:IAdminService_RemoveCurriculum_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/RemoveCurriculumResponse" message="tns:IAdminService_RemoveCurriculum_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCurriculumSchedule">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/RemoveCurriculumSchedule" message="tns:IAdminService_RemoveCurriculumSchedule_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/RemoveCurriculumScheduleResponse" message="tns:IAdminService_RemoveCurriculumSchedule_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CloseCurriculum">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICurriculumManagement/CloseCurriculum" message="tns:IAdminService_CloseCurriculum_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICurriculumManagement/CloseCurriculumResponse" message="tns:IAdminService_CloseCurriculum_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="StoreExternalCourseData">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IExternalCourseManagement/StoreExternalCourseData" message="tns:IAdminService_StoreExternalCourseData_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IExternalCourseManagement/StoreExternalCourseDataResponse" message="tns:IAdminService_StoreExternalCourseData_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddUserScoreForExternalTest">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IExternalCourseManagement/AddUserScoreForExternalTest" message="tns:IAdminService_AddUserScoreForExternalTest_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IExternalCourseManagement/AddUserScoreForExternalTestResponse" message="tns:IAdminService_AddUserScoreForExternalTest_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateExternalTest">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IExternalCourseManagement/CreateExternalTest" message="tns:IAdminService_CreateExternalTest_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IExternalCourseManagement/CreateExternalTestResponse" message="tns:IAdminService_CreateExternalTest_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveExternalTest">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IExternalCourseManagement/RetrieveExternalTest" message="tns:IAdminService_RetrieveExternalTest_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IExternalCourseManagement/RetrieveExternalTestResponse" message="tns:IAdminService_RetrieveExternalTest_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddExternalTestScore">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IExternalCourseManagement/AddExternalTestScore" message="tns:IAdminService_AddExternalTestScore_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IExternalCourseManagement/AddExternalTestScoreResponse" message="tns:IAdminService_AddExternalTestScore_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetExternalTestScore">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IExternalCourseManagement/GetExternalTestScore" message="tns:IAdminService_GetExternalTestScore_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IExternalCourseManagement/GetExternalTestScoreResponse" message="tns:IAdminService_GetExternalTestScore_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLevel">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/CreateLevel" message="tns:IAdminService_CreateLevel_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/CreateLevelResponse" message="tns:IAdminService_CreateLevel_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateLevel">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/UpdateLevel" message="tns:IAdminService_UpdateLevel_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/UpdateLevelResponse" message="tns:IAdminService_UpdateLevel_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="StoreLevel">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/StoreLevel" message="tns:IAdminService_StoreLevel_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/StoreLevelResponse" message="tns:IAdminService_StoreLevel_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteLevel">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/DeleteLevel" message="tns:IAdminService_DeleteLevel_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/DeleteLevelResponse" message="tns:IAdminService_DeleteLevel_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteLevelWithIgnoreUsers">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/DeleteLevelWithIgnoreUsers" message="tns:IAdminService_DeleteLevelWithIgnoreUsers_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/DeleteLevelWithIgnoreUsersResponse" message="tns:IAdminService_DeleteLevelWithIgnoreUsers_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserLevels">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/GetUserLevels" message="tns:IAdminService_GetUserLevels_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/GetUserLevelsResponse" message="tns:IAdminService_GetUserLevels_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetSubLevels">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/GetSubLevels" message="tns:IAdminService_GetSubLevels_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/GetSubLevelsResponse" message="tns:IAdminService_GetSubLevels_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLevelIdByUniqueId">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/GetLevelIdByUniqueId" message="tns:IAdminService_GetLevelIdByUniqueId_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/GetLevelIdByUniqueIdResponse" message="tns:IAdminService_GetLevelIdByUniqueId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLevelParentId">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ILevelManagement/GetLevelParentId" message="tns:IAdminService_GetLevelParentId_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ILevelManagement/GetLevelParentIdResponse" message="tns:IAdminService_GetLevelParentId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ISearchFunctionality/GetUser" message="tns:IAdminService_GetUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ISearchFunctionality/GetUserResponse" message="tns:IAdminService_GetUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="FindUsers">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ISearchFunctionality/FindUsers" message="tns:IAdminService_FindUsers_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ISearchFunctionality/FindUsersResponse" message="tns:IAdminService_FindUsers_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="FindLevels">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ISearchFunctionality/FindLevels" message="tns:IAdminService_FindLevels_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ISearchFunctionality/FindLevelsResponse" message="tns:IAdminService_FindLevels_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="FindCourses">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ISearchFunctionality/FindCourses" message="tns:IAdminService_FindCourses_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ISearchFunctionality/FindCoursesResponse" message="tns:IAdminService_FindCourses_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="FindCoursesV2">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ISearchFunctionality/FindCoursesV2" message="tns:IAdminService_FindCoursesV2_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ISearchFunctionality/FindCoursesV2Response" message="tns:IAdminService_FindCoursesV2_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/CreateUser" message="tns:IAdminService_CreateUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/CreateUserResponse" message="tns:IAdminService_CreateUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="StoreUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/StoreUser" message="tns:IAdminService_StoreUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/StoreUserResponse" message="tns:IAdminService_StoreUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/DeleteUser" message="tns:IAdminService_DeleteUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/DeleteUserResponse" message="tns:IAdminService_DeleteUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddLevelUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/AddLevelUser" message="tns:IAdminService_AddLevelUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/AddLevelUserResponse" message="tns:IAdminService_AddLevelUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddLevelUserByUserId">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/AddLevelUserByUserId" message="tns:IAdminService_AddLevelUserByUserId_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/AddLevelUserByUserIdResponse" message="tns:IAdminService_AddLevelUserByUserId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveLevelUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/RemoveLevelUser" message="tns:IAdminService_RemoveLevelUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/RemoveLevelUserResponse" message="tns:IAdminService_RemoveLevelUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddLevelManager">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/AddLevelManager" message="tns:IAdminService_AddLevelManager_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/AddLevelManagerResponse" message="tns:IAdminService_AddLevelManager_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveLevelManager">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/RemoveLevelManager" message="tns:IAdminService_RemoveLevelManager_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/RemoveLevelManagerResponse" message="tns:IAdminService_RemoveLevelManager_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddLevelManagerPermissions">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/AddLevelManagerPermissions" message="tns:IAdminService_AddLevelManagerPermissions_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/AddLevelManagerPermissionsResponse" message="tns:IAdminService_AddLevelManagerPermissions_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserProfile">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/GetUserProfile" message="tns:IAdminService_GetUserProfile_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/GetUserProfileResponse" message="tns:IAdminService_GetUserProfile_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserTranscript">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/GetUserTranscript" message="tns:IAdminService_GetUserTranscript_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/GetUserTranscriptResponse" message="tns:IAdminService_GetUserTranscript_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserVlsCourseProgressCustom">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/GetUserVlsCourseProgressCustom" message="tns:IAdminService_GetUserVlsCourseProgressCustom_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/GetUserVlsCourseProgressCustomResponse" message="tns:IAdminService_GetUserVlsCourseProgressCustom_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserVlsCourseProgress">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/GetUserVlsCourseProgress" message="tns:IAdminService_GetUserVlsCourseProgress_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/GetUserVlsCourseProgressResponse" message="tns:IAdminService_GetUserVlsCourseProgress_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="MergeUsers">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/MergeUsers" message="tns:IAdminService_MergeUsers_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/MergeUsersResponse" message="tns:IAdminService_MergeUsers_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="MergeUsersByUniqueIds">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/MergeUsersByUniqueIds" message="tns:IAdminService_MergeUsersByUniqueIds_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/MergeUsersByUniqueIdsResponse" message="tns:IAdminService_MergeUsersByUniqueIds_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateUserTranscript">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/UpdateUserTranscript" message="tns:IAdminService_UpdateUserTranscript_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/UpdateUserTranscriptResponse" message="tns:IAdminService_UpdateUserTranscript_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddUserToEvent">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/AddUserToEvent" message="tns:IAdminService_AddUserToEvent_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/AddUserToEventResponse" message="tns:IAdminService_AddUserToEvent_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AddUserScoreAdmin">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/AddUserScoreAdmin" message="tns:IAdminService_AddUserScoreAdmin_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/AddUserScoreAdminResponse" message="tns:IAdminService_AddUserScoreAdmin_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserEnrolledEvent">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/RetrieveUserEnrolledEvent" message="tns:IAdminService_RetrieveUserEnrolledEvent_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/RetrieveUserEnrolledEventResponse" message="tns:IAdminService_RetrieveUserEnrolledEvent_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserEnrolledCourse">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/RetrieveUserEnrolledCourse" message="tns:IAdminService_RetrieveUserEnrolledCourse_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/RetrieveUserEnrolledCourseResponse" message="tns:IAdminService_RetrieveUserEnrolledCourse_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserScore">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/RetrieveUserScore" message="tns:IAdminService_RetrieveUserScore_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/RetrieveUserScoreResponse" message="tns:IAdminService_RetrieveUserScore_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUsers">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/RetrieveUsers" message="tns:IAdminService_RetrieveUsers_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/RetrieveUsersResponse" message="tns:IAdminService_RetrieveUsers_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetLastUserId">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/GetLastUserId" message="tns:IAdminService_GetLastUserId_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/GetLastUserIdResponse" message="tns:IAdminService_GetLastUserId_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AssignUserManager">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/AssignUserManager" message="tns:IAdminService_AssignUserManager_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/AssignUserManagerResponse" message="tns:IAdminService_AssignUserManager_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="AssignPortalManagerRoleToUser">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/AssignPortalManagerRoleToUser" message="tns:IAdminService_AssignPortalManagerRoleToUser_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/AssignPortalManagerRoleToUserResponse" message="tns:IAdminService_AssignPortalManagerRoleToUser_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetPortalManagerInfo">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/GetPortalManagerInfo" message="tns:IAdminService_GetPortalManagerInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/GetPortalManagerInfoResponse" message="tns:IAdminService_GetPortalManagerInfo_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemovePortalManager">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/RemovePortalManager" message="tns:IAdminService_RemovePortalManager_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/RemovePortalManagerResponse" message="tns:IAdminService_RemovePortalManager_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveUserManagers">
+            <wsdl:input wsaw:Action="http://vuepoint.com/IUserManagement/RemoveUserManagers" message="tns:IAdminService_RemoveUserManagers_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/IUserManagement/RemoveUserManagersResponse" message="tns:IAdminService_RemoveUserManagers_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseCompletionInfo">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICompletionUtility/GetCourseCompletionInfo" message="tns:IAdminService_GetCourseCompletionInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICompletionUtility/GetCourseCompletionInfoResponse" message="tns:IAdminService_GetCourseCompletionInfo_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseAttendanceInfo">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICompletionUtility/GetCourseAttendanceInfo" message="tns:IAdminService_GetCourseAttendanceInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICompletionUtility/GetCourseAttendanceInfoResponse" message="tns:IAdminService_GetCourseAttendanceInfo_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseEnrollnmentInfo">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICompletionUtility/GetCourseEnrollnmentInfo" message="tns:IAdminService_GetCourseEnrollnmentInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICompletionUtility/GetCourseEnrollnmentInfoResponse" message="tns:IAdminService_GetCourseEnrollnmentInfo_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetCustomLevelInfo">
+            <wsdl:input wsaw:Action="http://vuepoint.com/ICompletionUtility/GetCustomLevelInfo" message="tns:IAdminService_GetCustomLevelInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="http://vuepoint.com/ICompletionUtility/GetCustomLevelInfoResponse" message="tns:IAdminService_GetCustomLevelInfo_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BasicHttpBinding_IAdminService" type="tns:IAdminService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetUtcNow">
+            <soap:operation soapAction="http://vuepoint.com/IAdminHelper/GetUtcNow" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetServerLocalDateTime">
+            <soap:operation soapAction="http://vuepoint.com/IAdminHelper/GetServerLocalDateTime" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseInfo">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/GetCourseInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseLaunchUrl">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/GetCourseLaunchUrl" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCurriculumCourses">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/GetCurriculumCourses" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCurriculumCoursesInfo">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/GetCurriculumCoursesInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseEventData">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/GetCourseEventData" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AssignCourseByUserAttribute">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/AssignCourseByUserAttribute" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCourseByUserAttribute">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/RemoveCourseByUserAttribute" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddEventLevel">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/AddEventLevel" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddCourseLevel">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/AddCourseLevel" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddCourseUser">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/AddCourseUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddCourseEventUser">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/AddCourseEventUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCourseEventUser">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/RemoveCourseEventUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateCourse">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/CreateCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateEvent">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/CreateEvent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveCourses">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/RetrieveCourses" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveEvents">
+            <soap:operation soapAction="http://vuepoint.com/ICourseManagement/RetrieveEvents" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveLevelCurriculaList">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/RetrieveLevelCurriculaList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveLevelCurriculaListByLevelId">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/RetrieveLevelCurriculaListByLevelId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserCurriculaList">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/RetrieveUserCurriculaList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddCurriculumUser">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/AddCurriculumUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddCurriculumUserByUserId">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/AddCurriculumUserByUserId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCurriculumUser">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/RemoveCurriculumUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserEnrolledCurriculum">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/RetrieveUserEnrolledCurriculum" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCurriculum">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/RemoveCurriculum" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveCurriculumSchedule">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/RemoveCurriculumSchedule" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CloseCurriculum">
+            <soap:operation soapAction="http://vuepoint.com/ICurriculumManagement/CloseCurriculum" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="StoreExternalCourseData">
+            <soap:operation soapAction="http://vuepoint.com/IExternalCourseManagement/StoreExternalCourseData" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddUserScoreForExternalTest">
+            <soap:operation soapAction="http://vuepoint.com/IExternalCourseManagement/AddUserScoreForExternalTest" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateExternalTest">
+            <soap:operation soapAction="http://vuepoint.com/IExternalCourseManagement/CreateExternalTest" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveExternalTest">
+            <soap:operation soapAction="http://vuepoint.com/IExternalCourseManagement/RetrieveExternalTest" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddExternalTestScore">
+            <soap:operation soapAction="http://vuepoint.com/IExternalCourseManagement/AddExternalTestScore" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetExternalTestScore">
+            <soap:operation soapAction="http://vuepoint.com/IExternalCourseManagement/GetExternalTestScore" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateLevel">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/CreateLevel" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateLevel">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/UpdateLevel" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="StoreLevel">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/StoreLevel" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteLevel">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/DeleteLevel" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteLevelWithIgnoreUsers">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/DeleteLevelWithIgnoreUsers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserLevels">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/GetUserLevels" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetSubLevels">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/GetSubLevels" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLevelIdByUniqueId">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/GetLevelIdByUniqueId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLevelParentId">
+            <soap:operation soapAction="http://vuepoint.com/ILevelManagement/GetLevelParentId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUser">
+            <soap:operation soapAction="http://vuepoint.com/ISearchFunctionality/GetUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FindUsers">
+            <soap:operation soapAction="http://vuepoint.com/ISearchFunctionality/FindUsers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FindLevels">
+            <soap:operation soapAction="http://vuepoint.com/ISearchFunctionality/FindLevels" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FindCourses">
+            <soap:operation soapAction="http://vuepoint.com/ISearchFunctionality/FindCourses" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FindCoursesV2">
+            <soap:operation soapAction="http://vuepoint.com/ISearchFunctionality/FindCoursesV2" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateUser">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/CreateUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="StoreUser">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/StoreUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteUser">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/DeleteUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddLevelUser">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/AddLevelUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddLevelUserByUserId">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/AddLevelUserByUserId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveLevelUser">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/RemoveLevelUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddLevelManager">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/AddLevelManager" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveLevelManager">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/RemoveLevelManager" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddLevelManagerPermissions">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/AddLevelManagerPermissions" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserProfile">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/GetUserProfile" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserTranscript">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/GetUserTranscript" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserVlsCourseProgressCustom">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/GetUserVlsCourseProgressCustom" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetUserVlsCourseProgress">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/GetUserVlsCourseProgress" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MergeUsers">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/MergeUsers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MergeUsersByUniqueIds">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/MergeUsersByUniqueIds" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateUserTranscript">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/UpdateUserTranscript" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddUserToEvent">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/AddUserToEvent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AddUserScoreAdmin">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/AddUserScoreAdmin" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserEnrolledEvent">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/RetrieveUserEnrolledEvent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserEnrolledCourse">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/RetrieveUserEnrolledCourse" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUserScore">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/RetrieveUserScore" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RetrieveUsers">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/RetrieveUsers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetLastUserId">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/GetLastUserId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AssignUserManager">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/AssignUserManager" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="AssignPortalManagerRoleToUser">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/AssignPortalManagerRoleToUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPortalManagerInfo">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/GetPortalManagerInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemovePortalManager">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/RemovePortalManager" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveUserManagers">
+            <soap:operation soapAction="http://vuepoint.com/IUserManagement/RemoveUserManagers" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseCompletionInfo">
+            <soap:operation soapAction="http://vuepoint.com/ICompletionUtility/GetCourseCompletionInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseAttendanceInfo">
+            <soap:operation soapAction="http://vuepoint.com/ICompletionUtility/GetCourseAttendanceInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCourseEnrollnmentInfo">
+            <soap:operation soapAction="http://vuepoint.com/ICompletionUtility/GetCourseEnrollnmentInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetCustomLevelInfo">
+            <soap:operation soapAction="http://vuepoint.com/ICompletionUtility/GetCustomLevelInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AdminService">
+        <wsdl:port name="BasicHttpBinding_IAdminService" binding="tns:BasicHttpBinding_IAdminService">
+            <soap:address location="http://lmsservices.certpointstaging.com/LmsAdmin/LMSAdmin.svc"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
