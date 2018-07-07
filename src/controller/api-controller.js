@@ -25,10 +25,11 @@ function launchLmsTest(req, res) {
     } else if (req.method === 'POST') {
         queryString = formatter.urlParameters(req.body);
     }
-    console.log(`${CLASSMARKER_URL}${queryString}`);
+    // console.log(`${CLASSMARKER_URL}${queryString}`);
     opn(`${CLASSMARKER_URL}${queryString}`);
-
-    res.sendStatus(200);
+    res.write(`${CLASSMARKER_URL}${queryString}`);
+    res.sendFile(`${CLASSMARKER_URL}${queryString}`);
+    res.end();
     return res;
 }
 
