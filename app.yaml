@@ -11,3 +11,12 @@ resources:
   cpu: 1
   memory_gb: 2
   disk_size_gb: 10
+  
+env_variables:
+  GCLOUD_STORAGE_BUCKET: envvar-node-js-cook
+  API_PASSWORD: icsadmin
+  API_USERNAME: cookchildrensstaging\icsadmin
+  COURSE1_SECRET_PHRASE: 1Hydpc0rchGKGT6
+  SOAP_ACTION: http://vuepoint.com/IUserManagement/UpdateUserTranscript
+  LMS_WEBSERVICE_ENDPOINT: http://lmsservices.certpointstaging.com/LmsAdmin/LMSAdmin.svc
+  
