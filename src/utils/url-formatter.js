@@ -1,7 +1,5 @@
-var qs = require('query-string');
-var _ = require('lodash');
-
-var logger = require('../../config/logger-config').Logger;
+var qs = require('query-string'),
+    _ = require('lodash');
 
 function setQueryParams(url, req) {
     var queryParams;
@@ -17,4 +15,10 @@ function setQueryParams(url, req) {
     return url;
 }
 
-module.exports = { setQueryParams };
+function urlParameters(request) {
+    var queryString = Object.keys(request).map((key) => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(request[key])
+    }).join('&');
+    return queryString;
+}
+module.exports = { setQueryParams, urlParameters };

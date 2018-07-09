@@ -1,34 +1,39 @@
-var forge = require('node-forge');
-var url = require('url');
+var forge = require('node-forge'),
+    url = require('url');
+_ = require('lodash');
+
+var lms = require('./soapClient');
+var convertToXml = require('../utils/convertToXml');
+
 
 var webhook = function (req, res) {
-    const newLocal = "X-Classmarker-Hmac-Sha256";
-    var headerHmacSignature = req.get(newLocal);
+    var headerHmacSignature = req.get("X-Classmarker-Hmac-Sha256");
     var jsonData = req.body;
-    // You are given a un‌iquе sеc‌ret code when crеati‌ng a Wеbho‌ok. declare in environment variable
-    var secret = 'OuKtbnh9nm2Bev7';
+    // You are given a un‌iquе sеc‌ret code when crеati‌ng a Wеbho‌ok.// TODO declare in ENVIRONMENT VARIABLE
+    var secret = 'H9f6x7RYz9KPvb1';
     var verified = verifyData(jsonData, headerHmacSignature, secret);
+
+
+    // console.log(js2xmlparser.parse("UpdateUserTranscript", tranformData));
     if (verified) {
+        var tranformData = convertToXml.convertWebhookToXML(req.body);
         // Sa‌vе rеsu‌lts in your databasе.
         // Important: Do not use a script that will take a long timе to respond.
+        lms.routeToLms(tranformData);
+        // res.redirect('/final-endpoint');
+        // TODO declare in ENVIRONMENT VARIABLE
         // Notify ClassMarker you have recеiv‌ed the Wеbh‌ook.
         res.sendStatus(200);
     }
     else {
         res.sendStatus(400)
     }
-    console.log(`Response: StatusCode :${res.statusCode} StatusMessage:${res.statusMessage}`)
-    console.log(`End Access for: ${url.parse(req.url).pathname}`);
-    console.log('===============================================');
 }
 
 var verifyData = function (jsonData, headerHmacSignature, secret) {
-    console.log(`JSON DATA:${JSON.stringify(jsonData)}`);
-    console.log(`HEADER HMAC SIGNATURE:${headerHmacSignature}`);
-    console.log(`SECRET:${secret}`);
     var jsonHmac = computeHmac(jsonData, secret);
-    console.log(`JSON HMAC: ${jsonHmac}`)
-    return jsonHmac == headerHmacSignature;
+    // return jsonHmac == headerHmacSignature;
+    return jsonHmac !== headerHmacSignature;
 };
 
 var computeHmac = function (jsonData, secret) {
@@ -39,5 +44,6 @@ var computeHmac = function (jsonData, secret) {
     hmac.update(jsonBytes);
     return forge.util.encode64(hmac.digest().bytes());
 };
+
 
 module.exports = { webhook };
