@@ -4,13 +4,12 @@ const express = require('express'),
   forge = require('node-forge'),
   request = require('request'),
   url = require('url'),
-  _ = require('lodash'),
-  opn = require('opn');
+  opn = require('opn'),
+  _ = require('lodash');
 
-const CLASSMARKER_URL = 'https://www.classmarker.com/online-test/start/?';
+
 var convertToXml = require('./src/utils/convertToXml'),
-  config = require('./config/config-file'),
-  formatter = require("./src/utils/url-formatter");
+  config = require('./config/config-file');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +24,7 @@ app.post('/webhook', function (req, res) {
   var headerHmacSignature = req.get("X-Classmarker-Hmac-Sha256");
   var jsonData = req.body;
   // You are given a un‌iquе sеc‌ret code when crеati‌ng a Wеbho‌ok.// TODO declare in ENVIRONMENT VARIABLE
-  var secret = 'H9f6x7RYz9KPvb1';
+  var secret = '1Hydpc0rchGKGT6';
   var verified = verifyData(jsonData, headerHmacSignature, secret);
 
 
@@ -34,8 +33,7 @@ app.post('/webhook', function (req, res) {
     var tranformData = convertToXml.convertWebhookToXML(req.body);
     // Sa‌vе rеsu‌lts in your databasе.
     // Important: Do not use a script that will take a long timе to respond.
-    routeToLms(tranformData);
-
+  	routeToLms(tranformData);
     // Notify ClassMarker you have recеiv‌ed the Wеbh‌ook.
     res.sendStatus(200);
   }
@@ -43,7 +41,6 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(400)
   }
 });
-
 
 app.post('/cook-childrens/webhook', function (req, res) {
   var headerHmacSignature = req.get("X-Classmarker-Hmac-Sha256");
@@ -51,9 +48,7 @@ app.post('/cook-childrens/webhook', function (req, res) {
   // You are given a un‌iquе sеc‌ret code when crеati‌ng a Wеbho‌ok.// TODO declare in ENVIRONMENT VARIABLE
   var secret = 'H9f6x7RYz9KPvb1';
   var verified = verifyData(jsonData, headerHmacSignature, secret);
-
-
-  // console.log(js2xmlparser.parse("UpdateUserTranscript", tranformData));
+ 	
   if (verified) {
     var tranformData = convertToXml.convertWebhookToXML(req.body);
     // Sa‌vе rеsu‌lts in your databasе.
@@ -64,24 +59,25 @@ app.post('/cook-childrens/webhook', function (req, res) {
     res.sendStatus(200);
   }
   else {
-    res.sendStatus(400)
+    res.sendStatus(400);
   }
 });
+
 
 app.post('/launchLmsTest', function (req, res) {
   var queryString;
   queryString = formatter.urlParameters(req.body);
-  opn(`${CLASSMARKER_URL}${queryString}`);
-  res.write(`${CLASSMARKER_URL}${queryString}`);
-  res.sendFile(`${CLASSMARKER_URL}${queryString}`);
-  res.end();
+  // opn(`${CLASSMARKER_URL}${queryString}`);
+  res.json(`${CLASSMARKER_URL}${queryString}`);
   return res;
-})
+});
 
 var verifyData = function (jsonData, headerHmacSignature, secret) {
   var jsonHmac = computeHmac(jsonData, secret);
-//  return jsonHmac == headerHmacSignature;
-  return jsonHmac !== headerHmacSignature;
+  console.log('JSONHMAC:'+ jsonHmac);
+  console.log('JSONHMAC:'+ headerHmacSignature);
+ return jsonHmac == headerHmacSignature;
+  //return jsonHmac !== headerHmacSignature;
 };
 
 var computeHmac = function (jsonData, secret) {
@@ -95,7 +91,7 @@ var computeHmac = function (jsonData, secret) {
 
 var routeToLms = function (postData) {
 
-  console.log('===============request==================');
+  console.log('=============Start Request==================');
   var reqt =
     `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vuep="http://vuepoint.com/">
       <soapenv:Header/>
@@ -105,7 +101,10 @@ var routeToLms = function (postData) {
             <vuep:sourceXml>
               <![CDATA[         
                 <UpdateUserTranscript>
-                 ${postData} 
+	            	<Level>
+	                  <UniqueId/>
+	                </Level>
+                 	${postData} 
                 </UpdateUserTranscript>
               ]]>
             </vuep:sourceXml>
@@ -115,7 +114,7 @@ var routeToLms = function (postData) {
      `;
 
   console.log(reqt);
-  console.log('===============request==================');
+  console.log('=============End Request==================');
 
 
   var requestOptions = {
@@ -127,16 +126,19 @@ var routeToLms = function (postData) {
   };
 
   request(requestOptions, function (error, response, body) {
-
-    if (error) {
-      console.log('===============ws error==================');
-      console.log(error)
-      console.log('===============ws error==================');
-    } else {
-      console.log('===============ws resonse==================');
-      console.log(response.body);
-      console.log('===============ws resonse==================');
-    }
+ 	 setTimeout(function() {
+	 	console.log('=============Call LMS WS Start=============');
+		if (error) {
+		 console.log('===============ws error==================');
+		 console.log(error);
+		 console.log('===============ws error==================');
+		} else {
+	      	 console.log('===============ws resonse==================');
+	         console.log(response.body);
+	         console.log('===============ws resonse==================');
+    	      }
+	     console.log('=============Call LMS WS End=================');
+		 }, 600000); // 600 seconds 
   });
 
 };
