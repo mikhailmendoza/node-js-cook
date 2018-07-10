@@ -2,10 +2,15 @@ const bodyParser = require('body-parser'),
   forge = require('node-forge'),
   express = require('express'),
   request = require('request'),
-  _ = require('lodash');
+  _ = require('lodash'),
+  cron = require("node-cron"),
+  moment = require("moment"),
+  fs = require("fs");
+
 
 var soapRequest = require('./src/utils/createSoapRequest'),
   formatter = require('./src/utils/url-formatter'),
+  logger = require('./config/logger-config').Logger,
   config = require('./config/config-file');
 
 const app = express();
@@ -79,10 +84,10 @@ var computeHmac = function (jsonData, secret) {
 };
 
 var routeToLms = function (postData) {
-  console.log('=============Start Request==================');
+  logger.info('=============Start Request==================');
   var wsRequest = soapRequest.createSoapRequest(postData);
-  console.log(wsRequest);
-  console.log('=============End Request===================');
+  logger.info(wsRequest);
+  logger.info('=============End Request===================');
 
   var requestOptions = {
     'method': 'POST',
@@ -91,23 +96,29 @@ var routeToLms = function (postData) {
     'headers': config.LMS_HEADERS,
     'body': wsRequest,
   };
-  console.log('=============Call LMS WS Start=============');
+  logger.info('=============Call LMS WS Start=============');
   request(requestOptions, function (error, response) {
     // setTimeout(() => {
     if (error) {
-      console.log('===============ws error====================');
-      console.log(error);
-      console.log('===============ws error====================');
+      logger.info('===============ws error====================');
+      logger.info(error);
+      logger.info('===============ws error====================');
     } else {
-      console.log('===============ws resonse==================');
-      console.log(response.body);
-      console.log('===============ws resonse==================');
+      logger.info('===============ws resonse==================');
+      logger.info(response.body);
+      logger.info('===============ws resonse==================');
     }
-    console.log('=============Call LMS WS END=================');
+    logger.info('=============Call LMS WS END=================');
   });
   //}, 600000);
 };
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!');
+// schedule job to compress log file run every midnight
+cron.schedule("* * * * * *", function () {
+  logger.compressLogFiles();
+  logger.info("running a task every minute");
+});
+
+app.listen(process.env.PORT, function () {
+  logger.info('Running in PORT:' + process.env.PORT);
 });
