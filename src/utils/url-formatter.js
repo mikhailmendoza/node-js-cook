@@ -1,5 +1,5 @@
-var qs = require('query-string'),
-    _ = require('lodash');
+const qs = require('query-string');
+const _ = require('lodash');
 
 function setQueryParams(url, req) {
     var queryParams;

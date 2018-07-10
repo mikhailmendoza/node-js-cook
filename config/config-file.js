@@ -1,16 +1,11 @@
-'use strict'
+'use strict';
 
-var postheaders = {
+const LMS_HEADERS = {
     'Content-Type': 'text/xml;charset=UTF-8',
-    'Authorization': 'Basic Y29va2NoaWxkcmVuc3N0YWdpbmcvaWNzYWRtaW46aWNzYWRtaW4=',
+    'Authorization': 'Basic ' + new Buffer('cookchildrensstaging\\icsadmin' + ':' + 'icsadmin').toString('base64'),
     'SOAPAction': 'http://vuepoint.com/IUserManagement/UpdateUserTranscript',
     'Connection': 'Keep-Alive'
 };
+const CLASSMAKER_URL = 'https://www.classmarker.com/online-test/start/?';
 
-
-
-const POST_URL = 'http://lmsservices.certpointstaging.com/LmsAdmin/LMSAdmin.svc',
-    POST_METHOD = 'POST',
-    HOST = 'lmsservices.certpointstaging.com';
-
-module.exports = { postheaders, POST_URL, POST_METHOD };
+module.exports = { LMS_HEADERS, CLASSMAKER_URL };
