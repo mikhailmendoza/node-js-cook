@@ -49,7 +49,7 @@ var routeToLms = function (postData) {
 
 var launchExam = function (res, req) {
     var urlQueryParams;
-    urlQueryParams = formatter.urlParameters(req.body);
+    urlQueryParams = formatter.urlQueryParams(req.body);
     res.redirect(constants.CLASSMAKER_URL + urlQueryParams);
 }
 
