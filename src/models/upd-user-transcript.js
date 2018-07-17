@@ -10,7 +10,10 @@ var UpdateUserTranscript = {
     Event: {
         Id: { type: String },
         Name: { type: String },
+        Notes: [],
+        Type : {type: Number},
         IsAutoCreated: { type: Number }
+        
     },
     Score: {
         Scored: { type: String },
