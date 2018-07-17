@@ -21,7 +21,7 @@ function objectToXml(obj) {
     return xml;
 }
 
-function createSoapRequest(request) {
+function createUpdateUserTranscriptReq(request) {
     var createSoapRequest =
         `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:vuep="http://vuepoint.com/">
             <soapenv:Header/>
@@ -45,4 +45,4 @@ function createSoapRequest(request) {
     return createSoapRequest;
 }
 
-module.exports = { createSoapRequest, objectToXml };
+module.exports = { createUpdateUserTranscriptReq, objectToXml };

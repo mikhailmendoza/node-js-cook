@@ -5,15 +5,16 @@ const bodyParser = require('body-parser');
 const cron = require("node-cron");
 
 const helper = require('./src/helper');
+
 const { constants, logger } = helper;
 
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 var routes = require("./src/routes/routes");
-app.use('',routes);
+
+app.use('', routes);
 
 // Cron job to compress log files runs every 12 am 
 cron.schedule("0 0 0 * * *", function () {
@@ -22,5 +23,5 @@ cron.schedule("0 0 0 * * *", function () {
 });
 
 app.listen(process.env.PORT, function () {
-  logger.log('Running in PORT:' + process.env.PORT);
+  logger.log(`Running in PORT:${process.env.PORT}`);
 });

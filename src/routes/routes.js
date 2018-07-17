@@ -1,16 +1,16 @@
-var express = require('express');
-var router = express.Router();
-var url = require("url");
+const express = require('express');
+const router = express.Router();
+const url = require("url");
 
-var core = require('../controller')
+const controller = require('../controller');
 const helper = require('../helper');
 
 const { constants, logger } = helper;
-const { lms, start, webhook } = core;
+const { lms, start, webhook } = controller;
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
-    logger.log('=============== Started Access for:' + url.parse(req.url).pathname + '===============');
+    logger.log(`=============== Started Access for: ${url.parse(req.url).pathname} ===============`);
     next();
 })
 // define the home page route

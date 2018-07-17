@@ -1,22 +1,22 @@
 'use strict';
 
 const request = require('request');
+
 const utils = require('../utils');
 const helper = require('../helper');
-const updReqSetters = require('../soap-req-model-setters/upd-user-transcript')
-
-const { createRequest, formatter } = utils
+const modelSetter = require('../soap-req-model-setters')
 
 const { constants, logger } = helper;
+const { updUserTranscript } = modelSetter;
+const { createRequest, formatter } = utils;
 
-
-var routeToLms = function (postData) {
-    logger.log('=============Start LMS WS Request==================');
-    var webhookResponse = updReqSetters.webhookToUpdUserTranscriptReq(postData);
+var routeToLms = function (webhookData) {
+    logger.log(`=============== Start LMS WS Request ===============`);
+    var webhookResponse = updUserTranscript.webhookToUpdUserTranscriptReq(webhookData);
     var lmsRequest = createRequest.objectToXml(webhookResponse);
-    var wsRequest = createRequest.createSoapRequest(lmsRequest);
+    var wsRequest = createRequest.createUpdateUserTranscriptReq(lmsRequest);
     logger.log(wsRequest);
-    logger.log('=============End Request===================');
+    logger.log(`=============== End Request ===============`);
 
     var requestOptions = {
         'method': 'POST',
@@ -26,24 +26,24 @@ var routeToLms = function (postData) {
         'body': wsRequest,
     };
 
-    logger.log('=============Call LMS WS Start=============');
+    logger.log(`=============== Call LMS WS Start ===============`);
     request(requestOptions, function (error, response) {
         if (error) {
             if (error.code === `ETIMEDOUT`) {
                 logger.log('RETRYING');
-                return routeToLms(postData);
+                return routeToLms(webhookData);
             }
             else {
-                logger.log('===============ws error====================');
+                logger.log(`=============== ws error ===============`);
                 logger.log(error);
-                logger.log('===============ws error====================');
+                logger.log(`=============== ws error ===============`);
             }
         } else {
-            logger.log('===============ws resonse==================');
+            logger.log(`=============== ws resonse ===============`);
             logger.log(response.body);
-            logger.log('===============ws resonse==================');
+            logger.log(`=============== ws resonse ===============`);
         }
-        logger.log('=============Call LMS WS END=================');
+        logger.log(`=============== Call LMS WS END ===============`);
     });
 };
 
