@@ -1,5 +1,5 @@
-function startApp(req, res) {
+function startApp (req, res) {
     return res.json('Connected Successfully');
-};
+}
 
-module.exports ={startApp};
+module.exports = { startApp };

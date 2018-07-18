@@ -1,8 +1,5 @@
 'use strict';
 
-const moment = require('moment');
-
-
 function objectToXml(obj) {
     var xml = '';
     for (var prop in obj) {

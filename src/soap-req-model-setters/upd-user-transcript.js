@@ -1,5 +1,5 @@
 
-const moment  = require('moment');
+const moment = require('moment');
 
 const model = require('../models');
 
@@ -16,13 +16,12 @@ var webhookToUpdUserTranscriptReq = function (request) {
     updUserTrascript.UpdateUserTranscript.Event.Name = 'Online Event';
     updUserTrascript.UpdateUserTranscript.Event.IsAutoCreated = 1;
     updUserTrascript.UpdateUserTranscript.Event.Type = 2;
-    updUserTrascript.UpdateUserTranscript.Score.Scored = moment.unix(request.result.time_finished).format("YYYY-MM-DD");
+    updUserTrascript.UpdateUserTranscript.Score.Scored = moment.unix(request.result.time_finished).format('YYYY-MM-DD');
     updUserTrascript.UpdateUserTranscript.Score.ScoreType = 3;
     updUserTrascript.UpdateUserTranscript.Score.Score = request.result.percentage;
     updUserTrascript.UpdateUserTranscript.Score.PassGrade = request.result.percentage_passmark;
     updUserTrascript.UpdateUserTranscript.Score.IsPassed = (request.result.passed ? 1 : 0);
     return updUserTrascript;
-
 }
 
 module.exports = { webhookToUpdUserTranscriptReq };

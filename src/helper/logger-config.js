@@ -1,7 +1,6 @@
 const moment = require('moment');
 const zlib = require('zlib');
 const gzip = zlib.createGzip();
-const _ = require('lodash');
 const fs = require('fs');
 const walk = require('walk');
 
@@ -16,12 +15,12 @@ var Logger = exports.Logger = {};
 
 var logStream;
 
-// CREATE LOG FILE DIR 
+// CREATE LOG FILE DIR
 if (!fs.existsSync(LOG_FILE_DIR)) {
   fs.mkdirSync(LOG_FILE_DIR);
 }
 
-//CREATE LOG FILE
+// CREATE LOG FILE
 Logger.log = function (msg) {
   var message = `${DATE_TIME_FORMAT}:${msg}\n`;
   if (fs.existsSync(`${LOG_FILE_DIR}${LOG_FILE_NAME}`)) {
@@ -30,10 +29,9 @@ Logger.log = function (msg) {
     logStream = fs.createWriteStream(`${LOG_FILE_DIR}${LOG_FILE_NAME}`);
     logStream.write(message);
   }
-}
+};
 
 Logger.checkLogFiles = function () {
-  var files = [];
   // Iterate over the files located in logs directory
   var walker = walk.walk(LOG_FILE_DIR, { followLinks: false });
   walker.on('file', function (root, stat, next) {
@@ -41,14 +39,13 @@ Logger.checkLogFiles = function () {
     var fileName = stat.name.substring('logs_'.length);
     fileName = fileName.slice(0, fileName.lastIndexOf('.'));
     var logFileDate = moment(fileName, "YYYY-MM-DD");
-    var currDate = moment().format("YYYY-MM-DD");
     // compress all previously created log file
     if (logFileDate.isBefore(moment().format("YYYY-MM-DD"))) {
       compressLogFiles(fileName);
     }
     next();
   });
-}
+};
 
 // COMPRESS ALL LOG FILE AND MOVE IT TO logs/archive DIR 
 var compressLogFiles = function (logFileDate) {
@@ -62,5 +59,4 @@ var compressLogFiles = function (logFileDate) {
     input.pipe(gzip).pipe(output);
     fs.unlinkSync(LOG_FILE_DIR + fileName);
   }
-
-}
+};

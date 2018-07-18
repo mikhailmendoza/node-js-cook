@@ -4,7 +4,7 @@ const request = require('request');
 
 const utils = require('../utils');
 const helper = require('../helper');
-const modelSetter = require('../soap-req-model-setters')
+const modelSetter = require('../soap-req-model-setters');
 
 const { constants, logger } = helper;
 const { updUserTranscript } = modelSetter;
@@ -23,7 +23,7 @@ var routeToLms = function (webhookData) {
         'url': process.env.LMS_WEBSERVICE_ENDPOINT,
         'qs': { 'wsdl': '' },
         'headers': constants.LMS_HEADERS,
-        'body': wsRequest,
+        'body': wsRequest
     };
 
     logger.log(`=============== Call LMS WS Start ===============`);
@@ -32,8 +32,7 @@ var routeToLms = function (webhookData) {
             if (error.code === `ETIMEDOUT`) {
                 logger.log('RETRYING');
                 return routeToLms(webhookData);
-            }
-            else {
+            } else {
                 logger.log(`=============== ws error ===============`);
                 logger.log(error);
                 logger.log(`=============== ws error ===============`);
@@ -51,6 +50,6 @@ var launchExam = function (res, req) {
     var urlQueryParams;
     urlQueryParams = formatter.urlQueryParams(req.body);
     res.redirect(constants.CLASSMAKER_URL + urlQueryParams);
-}
+};
 
 module.exports = { routeToLms, launchExam };

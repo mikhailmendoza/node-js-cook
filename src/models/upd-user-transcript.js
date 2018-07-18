@@ -11,9 +11,9 @@ var UpdateUserTranscript = {
         Id: { type: String },
         Name: { type: String },
         Notes: [],
-        Type : {type: Number},
+        Type: { type: Number },
         IsAutoCreated: { type: Number }
-        
+
     },
     Score: {
         Scored: { type: String },
@@ -22,6 +22,6 @@ var UpdateUserTranscript = {
         PassGrade: { type: String },
         IsPassed: { type: Number }
     }
-}
+};
 
 module.exports = { UpdateUserTranscript };
