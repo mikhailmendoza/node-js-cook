@@ -2,7 +2,7 @@
 
 const LMS_HEADERS = {
     'Content-Type': 'text/xml;charset=UTF-8',
-    'Authorization': 'Basic ' + new Buffer('cookchildrensstaging\\icsadmin' + ':' + 'icsadmin').toString('base64'),
+    'Authorization': 'Basic ' + Buffer.from('cookchildrensstaging\\icsadmin' + ':' + 'icsadmin').toString('base64'),
     'SOAPAction': 'http://vuepoint.com/IUserManagement/UpdateUserTranscript',
     'Connection': 'Keep-Alive'
 };

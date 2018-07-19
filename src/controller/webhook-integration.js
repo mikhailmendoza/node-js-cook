@@ -36,7 +36,7 @@ var computeHmac = function (jsonData, secret) {
     var hmac = forge.hmac.create();
     hmac.start('sha256', secret);
     var jsonString = JSON.stringify(jsonData);
-    var jsonBytes = new Buffer(jsonString, 'ascii');
+    var jsonBytes = Buffer.from(jsonString, 'ascii');
     hmac.update(jsonBytes);
     return forge.util.encode64(hmac.digest().bytes());
 };
