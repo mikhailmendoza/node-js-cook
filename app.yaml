@@ -1,7 +1,7 @@
 runtime: nodejs
 env: flex
 
-# This sample incurs costs to run on the App Engine flexible environment. 
+# This sample incurs costs to run on the App Engine flexible environment.
 # The settings below are to reduce costs during testing and are not appropriate
 # for production use. For more information, see:
 # https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml
@@ -11,12 +11,9 @@ resources:
   cpu: 1
   memory_gb: 2
   disk_size_gb: 10
-  
+
 env_variables:
-  GCLOUD_STORAGE_BUCKET: envvar-node-js-cook
-  API_PASSWORD: icsadmin
-  API_USERNAME: cookchildrensstaging\icsadmin
-  COURSE1_SECRET_PHRASE: 1Hydpc0rchGKGT6
+  LMS_USERNAME: cookchildrensstaging\icsadmin
+  LMS_PASSWORD: icsadmin
   SOAP_ACTION: http://vuepoint.com/IUserManagement/UpdateUserTranscript
   LMS_WEBSERVICE_ENDPOINT: http://lmsservices.certpointstaging.com/LmsAdmin/LMSAdmin.svc
-  
