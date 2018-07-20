@@ -1,5 +1,7 @@
+'use strict';
+
 function startApp (req, res) {
-    return res.json('Connected Successfully');
+  return res.json('Connected Successfully');
 }
 
 module.exports = { startApp };

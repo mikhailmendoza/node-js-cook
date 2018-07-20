@@ -1,7 +1,7 @@
+'use strict';
+
 function urlQueryParams (request) {
-    var queryString = Object.keys(request).map((key) => {
-        return encodeURIComponent(key) + '=' + encodeURIComponent(request[key])
-    }).join('&');
-    return queryString;
+  return Object.keys(request).map(key => `${key}=${encodeURIComponent(request[key])}`).join('&');
 }
+
 module.exports = { urlQueryParams };
