@@ -45,7 +45,7 @@ var routeToLms = function (webhookData) {
   });
 };
 
-var launchExam = function (res, req) {
+var launchExam = function (req, res) {
   var urlQueryParams;
   urlQueryParams = formatter.urlQueryParams(req.body);
   logger.log(`=============== Redirect to ${constants.CLASSMAKER_URL}${urlQueryParams}===============`);
