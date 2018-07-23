@@ -4,13 +4,14 @@ const forge = require('node-forge');
 
 const LMS_INTEGRATION = require('./lms-integration');
 const HELPER = require('../helper');
+
 const { LOGGER } = HELPER;
 
 var webhookIntegration = function (req, res) {
   var headerHmacSignature = req.get('X-Classmarker-Hmac-Sha256');
   var jsonData = req.body;
   // You are given a un‌iquе sеc‌ret code when crеati‌ng a Wеbho‌ok.
-  var secret = 'pCFSwlD7M3M1Eal';
+  var secret = 'YOUR SECRET PHRASE';
   var verified = verifyData(jsonData, headerHmacSignature, secret);
   if (verified) {
     LOGGER.log('WEBHOOK DATA: ' + JSON.stringify(jsonData));
