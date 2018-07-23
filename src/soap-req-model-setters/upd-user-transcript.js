@@ -4,25 +4,26 @@
 const moment = require('moment');
 
 const model = require('../models');
-const { updUserTrascript } = model;
+
+const { UPD_USER_TRANSCRIPT } = model;
 
 var webhookToUpdUserTranscriptReq = function (request) {
   var userCourse = request.result.cm_user_id.split('_');
   var userId = userCourse[0];
   var courseId = userCourse[1];
-  updUserTrascript.UpdateUserTranscript.User.Id = userId;
-  updUserTrascript.UpdateUserTranscript.Course.Id = courseId;
-  updUserTrascript.UpdateUserTranscript.Course.IsAutoCreated = 0;
-  updUserTrascript.UpdateUserTranscript.Event.Id = 0;
-  updUserTrascript.UpdateUserTranscript.Event.Name = 'Online Event';
-  updUserTrascript.UpdateUserTranscript.Event.IsAutoCreated = 1;
-  updUserTrascript.UpdateUserTranscript.Event.Type = 2;
-  updUserTrascript.UpdateUserTranscript.Score.Scored = moment.unix(request.result.time_finished).format('YYYY-MM-DD');
-  updUserTrascript.UpdateUserTranscript.Score.ScoreType = 3;
-  updUserTrascript.UpdateUserTranscript.Score.Score = request.result.percentage;
-  updUserTrascript.UpdateUserTranscript.Score.PassGrade = request.result.percentage_passmark;
-  updUserTrascript.UpdateUserTranscript.Score.IsPassed = (request.result.passed ? 1 : 0);
-  return updUserTrascript;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.User.Id = userId;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Course.Id = courseId;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Course.IsAutoCreated = 0;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.Id = 0;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.Name = 'Online Event';
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.IsAutoCreated = 1;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.Type = 2;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.Scored = moment.unix(request.result.time_finished).format('YYYY-MM-DD');
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.ScoreType = 3;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.Score = request.result.percentage;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.PassGrade = request.result.percentage_passmark;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.IsPassed = (request.result.passed ? 1 : 0);
+  return UPD_USER_TRANSCRIPT;
 };
 
 module.exports = { webhookToUpdUserTranscriptReq };

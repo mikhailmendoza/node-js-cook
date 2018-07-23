@@ -1,4 +1,4 @@
-const createRequest = require('./create-soap-request');
-const formatter = require('./url-formatter');
+const CREATE_SOAP_REQUEST = require('./create-soap-request');
+const URL_FORMATTER = require('./url-formatter');
 
-module.exports = { createRequest, formatter };
+module.exports = { CREATE_SOAP_REQUEST, URL_FORMATTER };
