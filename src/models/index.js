@@ -1,3 +1,3 @@
-const updUserTrascript = require('./upd-user-transcript');
+const UPD_USER_TRANSCRIPT = require('./upd-user-transcript');
 
-module.exports = { updUserTrascript };
+module.exports = { UPD_USER_TRANSCRIPT };
