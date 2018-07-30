@@ -12,7 +12,7 @@ Download Visual Studio Code from https://code.visualstudio.com/
 ## Install GIT
  Windows
  1) Go to the following website: https://git-scm.com/download/win . If the download doesn’t start automatically, then click on “click here to download automatically”.
- (https://cdn-images-1.medium.com/max/800/1*OHYPcsJfoiA71iIo7HFNRA.png)
+ ![alt text](https://cdn-images-1.medium.com/max/800/1*OHYPcsJfoiA71iIo7HFNRA.png)
  
 
 ## Get the Code
