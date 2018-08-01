@@ -16,9 +16,11 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 
-// define the home page route
+// API Route to verify if application is running
 router.get('/start', START_APP.startApp);
+// API Route to Redirect LMS to Classmarker Exam
 router.post('/launchLmsTest', CLASSMAKER_INTEGRATION.launchExam);
+// API Route for Webhook Integration
 router.post('/cook-childrens/webhook', WEBHOOK_INTEGRATION.webhookIntegration);
 
 module.exports = router;

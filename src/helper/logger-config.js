@@ -37,10 +37,10 @@ Logger.log = function (msg) {
 };
 
 Logger.checkLogFiles = function () {
-  // Iterate over the files located in logs directory
+  // Iterate over the files located in the logs directory
   var walker = walk.walk(LOG_FILE_DIR, { followLinks: false });
   walker.on('file', function (root, stat, next) {
-    // remove logs_ and .txt in the fileName
+    // remove logs_ prefix and file type
     var fileName = stat.name.substring(LOG_FILE_PREFIX.length);
     fileName = fileName.slice(0, fileName.lastIndexOf('.'));
     var logFileDate = moment(fileName, 'YYYY-MM-DD');

@@ -7,8 +7,8 @@ const MODEL_SETTER = require('../soap-req-model-setters');
 const HELPER = require('../helper');
 const UTILS = require('../utils');
 
-const { CREATE_SOAP_REQUEST } = UTILS;
 const { UPD_USER_TRANSCRIPT } = MODEL_SETTER;
+const { CREATE_SOAP_REQUEST } = UTILS;
 const { LOGGER } = HELPER;
 
 const LMS_HEADERS = {
@@ -22,8 +22,11 @@ var count = 0;
 
 var lmsIntegration = function (webhookData) {
   LOGGER.log('POPULATE LMS WEBSERVICE REQUEST START');
+  // Parse Webhook requst to WS JSON Specification
   var webhookResponse = UPD_USER_TRANSCRIPT.webhookToUpdUserTranscriptReq(webhookData);
+  // Transform parsed data to XML
   var xmlData = jsonxml(webhookResponse);
+  // Create Web service Soap Request
   var lmsSoapRequest = CREATE_SOAP_REQUEST.createUpdateUserTranscriptReq(xmlData);
   LOGGER.log(lmsSoapRequest);
   LOGGER.log('POPULATE LMS WEBSERVICE REQUEST END');
