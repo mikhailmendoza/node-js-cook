@@ -18,9 +18,10 @@ const LMS_HEADERS = {
   'Connection': 'Keep-Alive',
 };
 
+var count = 0;
+
 var lmsIntegration = function (webhookData) {
   LOGGER.log('POPULATE LMS WEBSERVICE REQUEST START');
-  LOGGER.log ('Basic ' + Buffer.from(process.env.LMS_USERNAME + ':' + process.env.LMS_PASSWORD).toString('base64'));
   var webhookResponse = UPD_USER_TRANSCRIPT.webhookToUpdUserTranscriptReq(webhookData);
   var xmlData = jsonxml(webhookResponse);
   var lmsSoapRequest = CREATE_SOAP_REQUEST.createUpdateUserTranscriptReq(xmlData);
@@ -34,11 +35,13 @@ var lmsIntegration = function (webhookData) {
     'headers': LMS_HEADERS,
     'body': lmsSoapRequest
   };
+
   LOGGER.log('CALL LMS WEBSERVICE START');
   request(requestOptions, function (error, response) {
     if (error) {
       if (error.code === 'ETIMEDOUT') {
-        LOGGER.log('RETRYING');
+        count++;
+        LOGGER.log('RETRYING ATTEMPT NUMBER:' + count);
         return lmsIntegration(webhookData);
       } else {
         LOGGER.log('WEBSERVICE RESPONSE ERROR');
@@ -48,6 +51,7 @@ var lmsIntegration = function (webhookData) {
       LOGGER.log('WEBSERVICE RESPONSE');
       LOGGER.log(response.body);
     }
+    count = 0;
     LOGGER.log('CALL LMS WEBSERVICE END');
   });
 };
