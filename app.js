@@ -1,11 +1,10 @@
 'use strict';
 
 const express = require('express');
-const bodyParser = require('body-parser');
 const cron = require('node-cron');
+const bodyParser = require('body-parser');
 
 const helper = require('./src/helper');
-
 const { LOGGER } = helper;
 
 var app = express();

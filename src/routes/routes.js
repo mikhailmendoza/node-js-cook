@@ -18,7 +18,7 @@ router.use(function timeLog(req, res, next) {
 
 // define the home page route
 router.get('/start', START_APP.startApp);
-router.post('/cook-childrens/webhook', WEBHOOK_INTEGRATION.webhookIntegration);
 router.post('/launchLmsTest', CLASSMAKER_INTEGRATION.launchExam);
+router.post('/cook-childrens/webhook', WEBHOOK_INTEGRATION.webhookIntegration);
 
 module.exports = router;

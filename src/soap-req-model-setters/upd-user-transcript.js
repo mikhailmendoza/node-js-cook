@@ -3,9 +3,9 @@
 
 const moment = require('moment');
 
-const model = require('../models');
+const MODEL = require('../models');
 
-const { UPD_USER_TRANSCRIPT } = model;
+const { UPD_USER_TRANSCRIPT } = MODEL;
 
 var webhookToUpdUserTranscriptReq = function (request) {
   var userCourse = request.result.cm_user_id.split('_');
