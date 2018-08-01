@@ -7,9 +7,9 @@ const fs = require('fs');
 
 const ARCHIVE_FILE_DIR = 'archive/';
 const LOG_FILE_TXT_SUFFIX = '.txt';
+const LOG_FILE_GZ_SUFFIX = '.gz';
 const LOG_FILE_PREFIX = 'logs_';
 const GZIP = zlib.createGzip();
-const LOG_FILE_TXT_GZ = '.gz';
 const LOG_FILE_DIR = 'logs/';
 const UTF8_FORMAT = 'utf8';
 
@@ -60,7 +60,7 @@ var compressLogFiles = function (logFileDate) {
       fs.mkdirSync(LOG_FILE_DIR + ARCHIVE_FILE_DIR);
     }
     const input = fs.createReadStream(LOG_FILE_DIR + fileName);
-    const output = fs.createWriteStream(LOG_FILE_DIR + ARCHIVE_FILE_DIR + fileName + LOG_FILE_TXT_GZ);
+    const output = fs.createWriteStream(LOG_FILE_DIR + ARCHIVE_FILE_DIR + fileName + LOG_FILE_GZ_SUFFIX);
     input.pipe(GZIP).pipe(output);
     fs.unlinkSync(LOG_FILE_DIR + fileName);
   }
