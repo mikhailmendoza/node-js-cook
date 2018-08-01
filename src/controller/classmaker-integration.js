@@ -1,8 +1,7 @@
 'use strict';
 
-const UTILS = require('../utils');
-
 const HELPER = require('../helper');
+const UTILS = require('../utils');
 
 const { URL_FORMATTER } = UTILS;
 const { LOGGER } = HELPER;
