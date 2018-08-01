@@ -41,7 +41,7 @@ var lmsIntegration = function (webhookData) {
     if (error) {
       if (error.code === 'ETIMEDOUT') {
         count++;
-        LOGGER.log('RETRYING ATTEMPT NUMBER:' + count);
+        LOGGER.log('CONNECTION TIMEDOUT RETRYING ATTEMPT NUMBER:' + count);
         return lmsIntegration(webhookData);
       } else {
         LOGGER.log('WEBSERVICE RESPONSE ERROR');
