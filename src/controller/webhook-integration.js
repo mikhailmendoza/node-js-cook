@@ -15,7 +15,7 @@ var webhookIntegration = function (req, res) {
   var verified = verifyData(jsonData, headerHmacSignature, secret);
   if (verified) {
     LOGGER.log('WEBHOOK DATA: ' + JSON.stringify(jsonData));
-    // Call to LMS Webservice delay 2 secs to avoid webhook Inactive
+    // Sa‌vе rеsu‌lts in your databasе. Important: Do not use a script that will take a long timе to respond.
     setTimeout(() => {
       LMS_INTEGRATION.lmsIntegration(jsonData);
     }, 2000);

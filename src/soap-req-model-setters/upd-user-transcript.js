@@ -3,9 +3,9 @@
 
 const moment = require('moment');
 
-const MODEL = require('../models');
+const model = require('../models');
 
-const { UPD_USER_TRANSCRIPT } = MODEL;
+const { UPD_USER_TRANSCRIPT } = model;
 
 var webhookToUpdUserTranscriptReq = function (request) {
   var userCourse = request.result.cm_user_id.split('_');
@@ -18,7 +18,7 @@ var webhookToUpdUserTranscriptReq = function (request) {
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.Name = 'Online Event';
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.IsAutoCreated = 1;
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.Type = 2;
-  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.Scored = moment.unix(request.result.time_finished).format('YYYY-MM-DD');
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.Scored = moment.unix(request.result.time_finished).format('YYYY-MM-DD HH:mm:SS');
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.ScoreType = 3;
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.Score = request.result.percentage;
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.PassGrade = request.result.percentage_passmark;
