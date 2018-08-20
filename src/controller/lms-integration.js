@@ -12,12 +12,12 @@ const { UPD_USER_TRANSCRIPT } = MODEL_SETTER;
 const { LOGGER, LMS_VALUES, LOGGER_CODES, HTTP_METHOD } = HELPER;
 
 var lmsIntegration = function (webhookData) {
-  LOGGER.log(CODES.lms_01);
+  LOGGER.log(LOGGER_CODES.lms_01);
   var webhookResponse = UPD_USER_TRANSCRIPT.webhookToUpdUserTranscriptReq(webhookData);
   var xmlData = jsonxml(webhookResponse);
   var lms_soap_request = CREATE_SOAP_REQUEST.createUpdateUserTranscriptReq(xmlData);
   LOGGER.log(lms_soap_request);
-  LOGGER.log(CODES.lms_02);
+  LOGGER.log(LOGGER_CODES.lms_02);
 
   var requestOptions = {
     'method': HTTP_METHOD.post_method,
