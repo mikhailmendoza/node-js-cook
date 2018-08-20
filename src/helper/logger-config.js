@@ -60,5 +60,6 @@ var compressLogFiles = function (logFileDate) {
     const output = fs.createWriteStream(LOG_FILE_DIR + ARCHIVE_FILE_DIR + fileName + '.gz');
     input.pipe(GZIP).pipe(output);
     fs.unlinkSync(LOG_FILE_DIR + fileName);
+    Logger.log(fileName + ' Successfully archived' );
   }
 };
