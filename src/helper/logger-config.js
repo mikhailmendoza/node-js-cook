@@ -5,10 +5,9 @@ const walk = require('walk');
 const zlib = require('zlib');
 const fs = require('fs');
 
+const YEAR_DATE_FORMAT = moment().format('YYYY-MM-DD');
+const LOG_FILE_NAME = 'logs_' + YEAR_DATE_FORMAT + '.txt';
 const ARCHIVE_FILE_DIR = 'archive/';
-const LOG_FILE_TXT_SUFFIX = '.txt';
-const LOG_FILE_GZ_SUFFIX = '.gz';
-const LOG_FILE_PREFIX = 'logs_';
 const GZIP = zlib.createGzip();
 const LOG_FILE_DIR = 'logs/';
 const UTF8_FORMAT = 'utf8';
@@ -24,24 +23,22 @@ if (!fs.existsSync(LOG_FILE_DIR)) {
 
 // CREATE LOG FILE
 Logger.log = function (msg) {
-  var dateTimeNow = moment().format('YYYY-MM-DD HH:mm:ss.SSS');
-  var dateNow = moment().format('YYYY-MM-DD');
-  var logFileName = LOG_FILE_PREFIX + dateNow + LOG_FILE_TXT_SUFFIX;
-  var message = dateTimeNow + ':' + msg + '\n';
-  if (fs.existsSync(LOG_FILE_DIR + logFileName)) {
-    fs.appendFileSync(LOG_FILE_DIR + logFileName, message, UTF8_FORMAT);
+  var DATE_TIME_FORMAT = moment().format('YYYY-MM-DD HH:mm:ss.SSS');
+  var message = DATE_TIME_FORMAT + ':' + msg + '\n';
+  if (fs.existsSync(LOG_FILE_DIR + LOG_FILE_NAME)) {
+    fs.appendFileSync(LOG_FILE_DIR + LOG_FILE_NAME, message, UTF8_FORMAT);
   } else {
-    logStream = fs.createWriteStream(LOG_FILE_DIR + logFileName);
+    logStream = fs.createWriteStream(LOG_FILE_DIR + LOG_FILE_NAME);
     logStream.write(message);
   }
 };
 
 Logger.checkLogFiles = function () {
-  // Iterate over the files located in the logs directory
+  // Iterate over the files located in logs directory
   var walker = walk.walk(LOG_FILE_DIR, { followLinks: false });
   walker.on('file', function (root, stat, next) {
-    // remove logs_ prefix and file type
-    var fileName = stat.name.substring(LOG_FILE_PREFIX.length);
+    // remove logs_ and .txt in the fileName
+    var fileName = stat.name.substring('logs_'.length);
     fileName = fileName.slice(0, fileName.lastIndexOf('.'));
     var logFileDate = moment(fileName, 'YYYY-MM-DD');
     // compress all previously created log file
@@ -54,14 +51,15 @@ Logger.checkLogFiles = function () {
 
 // COMPRESS ALL LOG FILE AND MOVE IT TO logs/archive DIR
 var compressLogFiles = function (logFileDate) {
-  var fileName = LOG_FILE_PREFIX + logFileDate + LOG_FILE_TXT_SUFFIX;
+  var fileName = 'logs_' + logFileDate + '.txt';
   if (fs.existsSync(LOG_FILE_DIR + fileName)) {
     if (!fs.existsSync(LOG_FILE_DIR + ARCHIVE_FILE_DIR)) {
       fs.mkdirSync(LOG_FILE_DIR + ARCHIVE_FILE_DIR);
     }
     const input = fs.createReadStream(LOG_FILE_DIR + fileName);
-    const output = fs.createWriteStream(LOG_FILE_DIR + ARCHIVE_FILE_DIR + fileName + LOG_FILE_GZ_SUFFIX);
+    const output = fs.createWriteStream(LOG_FILE_DIR + ARCHIVE_FILE_DIR + fileName + '.gz');
     input.pipe(GZIP).pipe(output);
     fs.unlinkSync(LOG_FILE_DIR + fileName);
+    Logger.log(fileName + ' Successfully archived' );
   }
 };

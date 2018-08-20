@@ -1,5 +1,4 @@
 'use strict';
-
 function startApp (req, res) {
   return res.json('Connected Successfully');
 }

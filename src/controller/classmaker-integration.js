@@ -1,9 +1,10 @@
 'use strict';
 
-const HELPER = require('../helper');
-const UTILS = require('../utils');
+const utils = require('../utils');
 
-const { URL_FORMATTER } = UTILS;
+const HELPER = require('../helper');
+
+const { URL_FORMATTER } = utils;
 const { LOGGER } = HELPER;
 
 const CLASSMAKER_URL = 'https://www.classmarker.com/online-test/start/?';
