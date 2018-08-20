@@ -5,16 +5,16 @@ const forge = require('node-forge');
 const LMS_INTEGRATION = require('./lms-integration');
 const HELPER = require('../helper');
 
-const { LOGGER } = HELPER;
+const { LOGGER, CLASSMARKER, LOGGER_CODES } = HELPER;
 
 var webhookIntegration = function (req, res) {
-  var headerHmacSignature = req.get('X-Classmarker-Hmac-Sha256');
+  var headerHmacSignature = req.get(CLASSMARKER.hmac_header);
   var jsonData = req.body;
   // You are given a un‌iquе sеc‌ret code when crеati‌ng a Wеbho‌ok.
-  var secret = 'YOUR SECRET PHRASE';
+  var secret = CLASSMARKER.secret_phrase;
   var verified = verifyData(jsonData, headerHmacSignature, secret);
   if (verified) {
-    LOGGER.log('WEBHOOK DATA: ' + JSON.stringify(jsonData));
+    LOGGER.log(LOGGER_CODES.webhook_request + JSON.stringify(jsonData));
     // Sa‌vе rеsu‌lts in your databasе. Important: Do not use a script that will take a long timе to respond.
     setTimeout(() => {
       LMS_INTEGRATION.lmsIntegration(jsonData);

@@ -9,46 +9,38 @@ const UTILS = require('../utils');
 
 const { CREATE_SOAP_REQUEST } = UTILS;
 const { UPD_USER_TRANSCRIPT } = MODEL_SETTER;
-const { LOGGER } = HELPER;
-
-const LMS_HEADERS = {
-  'Content-Type': 'text/xml;charset=UTF-8',
-  'Authorization': 'Basic ' + Buffer.from(process.env.LMS_USERNAME + ':' + process.env.LMS_PASSWORD).toString('base64'),
-  'SOAPAction': process.env.LMS_SOAP_ACTION,
-  'Connection': 'Keep-Alive',
-};
+const { LOGGER, LMS_VALUES, LOGGER_CODES, HTTP_METHOD } = HELPER;
 
 var lmsIntegration = function (webhookData) {
-  LOGGER.log('POPULATE LMS WEBSERVICE REQUEST START');
-  LOGGER.log ('Basic ' + Buffer.from(LMS_USERNAME + ':' + LMS_PASSWORD).toString('base64'));
+  LOGGER.log(CODES.lms_01);
   var webhookResponse = UPD_USER_TRANSCRIPT.webhookToUpdUserTranscriptReq(webhookData);
   var xmlData = jsonxml(webhookResponse);
-  var lmsSoapRequest = CREATE_SOAP_REQUEST.createUpdateUserTranscriptReq(xmlData);
-  LOGGER.log(lmsSoapRequest);
-  LOGGER.log('POPULATE LMS WEBSERVICE REQUEST END');
+  var lms_soap_request = CREATE_SOAP_REQUEST.createUpdateUserTranscriptReq(xmlData);
+  LOGGER.log(lms_soap_request);
+  LOGGER.log(CODES.lms_02);
 
   var requestOptions = {
-    'method': 'POST',
-    'url': process.env.LMS_WEBSERVICE_ENDPOINT,
+    'method': HTTP_METHOD.post_method,
+    'url': LMS_VALUES.lms_webservice_endpoint,
     'qs': { 'wsdl': '' },
-    'headers': LMS_HEADERS,
-    'body': lmsSoapRequest
+    'headers': LMS_VALUES.lms_header,
+    'body': lms_soap_request
   };
-  LOGGER.log('CALL LMS WEBSERVICE START');
+  LOGGER.log(LOGGER_CODES.ws_resp_start);
   request(requestOptions, function (error, response) {
     if (error) {
-      if (error.code === 'ETIMEDOUT') {
-        LOGGER.log('RETRYING');
+      if (error.code === LOGGER_CODES.ws_etimedout) {
+        LOGGER.log(LOGGER_CODES.ws_retry);
         return lmsIntegration(webhookData);
       } else {
-        LOGGER.log('WEBSERVICE RESPONSE ERROR');
+        LOGGER.log(LOGGER_CODES.ws_resp_error);
         LOGGER.log(error);
       }
     } else {
-      LOGGER.log('WEBSERVICE RESPONSE');
+      LOGGER.log(LOGGER_CODES.ws_resp_success);
       LOGGER.log(response.body);
     }
-    LOGGER.log('CALL LMS WEBSERVICE END');
+    LOGGER.log(LOGGER_CODES.ws_resp_finished);
   });
 };
 
