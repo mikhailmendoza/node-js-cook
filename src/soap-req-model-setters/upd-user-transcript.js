@@ -19,8 +19,8 @@ var webhookToUpdUserTranscriptReq = function (request) {
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.IsAutoCreated = 1;
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Event.Type = 2;
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.Scored = moment.unix(request.result.time_finished).format('YYYY-MM-DD HH:mm:ss');
-  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.ScoreType = 3;
-  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.Score = request.result.percentage;
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.ScoreType = (request.result.percentage_passmark <= 0 ? 1 : 3);
+  UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.Score = Math.round(request.result.percentage);
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.PassGrade = request.result.percentage_passmark;
   UPD_USER_TRANSCRIPT.UpdateUserTranscript.Score.IsPassed = (request.result.passed ? 1 : 0);
   return UPD_USER_TRANSCRIPT;

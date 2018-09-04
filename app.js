@@ -24,4 +24,5 @@ cron.schedule('0 0 0 * * *', function () {
 
 app.listen(process.env.PORT, function () {
   LOGGER.log('Running in PORT:' + process.env.PORT);
+  LOGGER.checkLogFiles();
 });
