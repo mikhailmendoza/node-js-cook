@@ -7,6 +7,7 @@ const cron = require('node-cron');
 const helper = require('./src/helper');
 
 const { LOGGER } = helper;
+const PORT = process.env.PORT || 80;
 
 var app = express();
 app.use(bodyParser.json());
@@ -22,7 +23,7 @@ cron.schedule('0 0 0 * * *', function () {
   LOGGER.checkLogFiles();
 });
 
-app.listen(process.env.PORT, function () {
-  LOGGER.log('Running in PORT:' + process.env.PORT);
+app.listen(PORT, function () {
+  LOGGER.log('Running in PORT:' + PORT);
   LOGGER.checkLogFiles();
 });

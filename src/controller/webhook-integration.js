@@ -10,8 +10,9 @@ const { LOGGER } = HELPER;
 var webhookIntegration = function (req, res) {
   var headerHmacSignature = req.get('X-Classmarker-Hmac-Sha256');
   var jsonData = req.body;
+LOGGER.log('HeaderHmacSignature:' + headerHmacSignature);
   // You are given a un‌iquе sеc‌ret code when crеati‌ng a Wеbho‌ok.
-  var secret = 'YOUR SECRET PHRASE';
+  var secret = 'DvIwWXh3I31FUwQ';
   var verified = verifyData(jsonData, headerHmacSignature, secret);
   if (verified) {
     LOGGER.log('WEBHOOK DATA: ' + JSON.stringify(jsonData));
@@ -22,12 +23,16 @@ var webhookIntegration = function (req, res) {
     res.sendStatus(200);
     // Notify ClassMarker you have recеiv‌ed the Wеbh‌ook.
   } else {
-    res.sendStatus(400);
+    LOGGER.log('Failed');
+	res.sendStatus(400);
   }
 };
 
 var verifyData = function (jsonData, headerHmacSignature, secret) {
+LOGGER.log('Verify Function: ' + JSON.stringify(jsonData));
+LOGGER.log('Secret:' + secret);
   var jsonHmac = computeHmac(jsonData, secret);
+LOGGER.log('jsonHmac: ' + jsonHmac);
   return jsonHmac == headerHmacSignature;
 };
 

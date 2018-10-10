@@ -5,8 +5,8 @@ const walk = require('walk');
 const zlib = require('zlib');
 const fs = require('fs');
 
-const YEAR_DATE_FORMAT = moment().format('YYYY-MM-DD');
-const LOG_FILE_NAME = 'logs_' + YEAR_DATE_FORMAT + '.txt';
+// const YEAR_DATE_FORMAT = moment().format('YYYY-MM-DD');
+// const LOG_FILE_NAME = 'logs_' + YEAR_DATE_FORMAT + '.txt';
 const ARCHIVE_FILE_DIR = 'archive/';
 const GZIP = zlib.createGzip();
 const LOG_FILE_DIR = 'logs/';
@@ -23,6 +23,8 @@ if (!fs.existsSync(LOG_FILE_DIR)) {
 
 // CREATE LOG FILE
 Logger.log = function (msg) {
+  var YEAR_DATE_FORMAT = moment().format('YYYY-MM-DD');
+  var LOG_FILE_NAME = 'logs_' + YEAR_DATE_FORMAT + '.txt';
   var DATE_TIME_FORMAT = moment().format('YYYY-MM-DD HH:mm:ss.SSS');
   var message = DATE_TIME_FORMAT + ':' + msg + '\n';
   if (fs.existsSync(LOG_FILE_DIR + LOG_FILE_NAME)) {
