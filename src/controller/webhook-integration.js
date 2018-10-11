@@ -10,10 +10,14 @@ const { LOGGER } = HELPER;
 var webhookIntegration = function (req, res) {
   var headerHmacSignature = req.get('X-Classmarker-Hmac-Sha256');
   var jsonData = req.body;
+ /* Log Node Parsed Body */
+   LOGGER.log("Node Parsed Body:\n" + JSON.stringify(jsonData));
+   /* Log Node Parsed Body */
+ LOGGER.log("Raw Body:\n" + req.rawBody);
 LOGGER.log('HeaderHmacSignature:' + headerHmacSignature);
   // You are given a un‌iquе sеc‌ret code when crеati‌ng a Wеbho‌ok.
   var secret = 'DvIwWXh3I31FUwQ';
-  var verified = verifyData(jsonData, headerHmacSignature, secret);
+  var verified = verifyData(req.rawBody, headerHmacSignature, secret);
   if (verified) {
     LOGGER.log('WEBHOOK DATA: ' + JSON.stringify(jsonData));
     // Sa‌vе rеsu‌lts in your databasе. Important: Do not use a script that will take a long timе to respond.
@@ -29,10 +33,9 @@ LOGGER.log('HeaderHmacSignature:' + headerHmacSignature);
 };
 
 var verifyData = function (jsonData, headerHmacSignature, secret) {
-LOGGER.log('Verify Function: ' + JSON.stringify(jsonData));
-LOGGER.log('Secret:' + secret);
   var jsonHmac = computeHmac(jsonData, secret);
-LOGGER.log('jsonHmac: ' + jsonHmac);
+   LOGGER.log('Sent HmacSignature:     ' + headerHmacSignature);
+   LOGGER.log('Computed HmacSignature: ' + jsonHmac);
   return jsonHmac == headerHmacSignature;
 };
 
